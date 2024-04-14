@@ -1,0 +1,10 @@
+export interface ISession {
+  _id: string;
+  name: string;
+  date: string;
+  day: string;
+  capacity: BigInt;
+  created: BigInt;
+  updated: BigInt;
+  user: string;
+}

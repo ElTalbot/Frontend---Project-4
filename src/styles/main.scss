@@ -3,6 +3,11 @@
 // ? Reassign any bulma variables
 $family-sans-serif: "Roboto", sans-serif;
 
+.clicked {
+  background-color: red;
+  color: white;
+}
+
 // ! example on how to customize, skip to section "Add your own Bulma styles":
 // https://bulma.io/documentation/customize/with-sass-cli/
 
