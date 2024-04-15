@@ -8,15 +8,17 @@ import AllMovements from "./components/Movements";
 import ShowMovement from "./components/ShowMovement";
 import AllSessions from "./components/Sessions";
 import Signup from "./components/Signup";
+import Login from "./components/Login";
+import AllPosts from "./components/posts";
 
 function App() {
   const [user, setUser] = useState(null);
   async function fetchUser() {
     const token = localStorage.getItem("token");
-    const resp = await axios.get(`/api/user`, {
+    const resp = await axios.get("/api/user", {
       headers: { Authorization: `Bearer ${token}` },
     });
-    console.log(resp.data);
+    console.log("resp", resp);
     setUser(resp.data);
   }
   //if there is a token (so if user logged in) it will fetch the user
@@ -30,8 +32,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login fetchUser={fetchUser} />} />
         <Route path="/movements" element={<AllMovements />} />
         <Route path="/sessions" element={<AllSessions user={user} />} />
+        <Route path="/posts" element={<AllPosts />} />
         <Route path="/movements/:movementId" element={<ShowMovement />} />
       </Routes>
     </Router>

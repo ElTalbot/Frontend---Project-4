@@ -1,7 +1,7 @@
 export interface IPost {
-  _id: string;
+  id: string;
   content: string;
-  created: BigInt;
-  updated: BigInt;
+  created_at: string;
+  updated_at: string;
   user: string;
 }

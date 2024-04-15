@@ -9,8 +9,6 @@ interface NavbarProps {
 }
 
 function Navbar({ user, setUser }: NavbarProps) {
-  console.log("user in the navbar:", user);
-
   const navigate = useNavigate();
 
   function logout() {
@@ -72,7 +70,7 @@ function Navbar({ user, setUser }: NavbarProps) {
                         <span>Sessions</span>
                       </span>
                     </Link>
-                    <Link to="/community" className="navbar-item">
+                    <Link to="/posts" className="navbar-item">
                       <span className="icon-text">
                         <span className="icon">
                           <i className="fa fa-street-view"></i>

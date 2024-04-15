@@ -32,7 +32,7 @@ function AllSessions({ user }: { user: null | IUser }) {
       </div>
 
       <span className="is-flex mt-3">
-        {user && user.is_admin === true && (
+        {user && (
           <Link to="/addmovement">
             <button className="button is-light is-outlined mr-4">
               Add movement
