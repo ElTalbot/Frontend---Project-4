@@ -1,13 +1,18 @@
 export interface IMovement {
-  _id: string;
+  id: string;
   name: string;
-  description: string;
+  descriptionOne: string;
+  descriptionTwo: string;
+  descriptionThree: string;
+  descriptionFour: string;
+  descriptionFive: string;
+  descriptionSix: string;
   image: string;
   type: string;
   equipment: string;
   video: string;
   adaption: string;
-  created: BigInt;
-  updated: BigInt;
+  created_at: string;
+  updated_at: string;
   user: string;
 }

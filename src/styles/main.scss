@@ -3,9 +3,16 @@
 // ? Reassign any bulma variables
 $family-sans-serif: "Roboto", sans-serif;
 
-.clicked {
-  background-color: red;
-  color: white;
+.custom-height {
+  max-height: 68px;
+}
+
+.underline-hover:hover {
+  font-weight: bold;
+}
+
+.card-content {
+  margin-top: auto;
 }
 
 // ! example on how to customize, skip to section "Add your own Bulma styles":

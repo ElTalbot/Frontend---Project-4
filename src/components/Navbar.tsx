@@ -19,10 +19,11 @@ function Navbar({ user, setUser }: NavbarProps) {
     navigate("/");
   }
 
-  const [isClicked, setIsClicked] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   function handleClick() {
-    setIsClicked(true);
+    setIsOpen(!isOpen);
+    console.log(isOpen);
   }
 
   return (
@@ -41,26 +42,60 @@ function Navbar({ user, setUser }: NavbarProps) {
             </Link>
           </div>
           <div className="navbar-end">
-            <div className="navbar-item has-dropdown ">
-              <div className={isClicked ? "clicked" : ""} onClick={handleClick}>
-                <a className="navbar-link">Community</a>
-
-                <div className="navbar-dropdown">
-                  <a className="navbar-item">Classes</a>
-                  <a className="navbar-item">Community</a>
-                  <a className="navbar-item">Movements</a>
-                  <div className="navbar-item"></div>
-                </div>
+            <div className="navbar-item dropdown is-active">
+              <div className="dropdown-trigger">
+                <button
+                  onClick={handleClick}
+                  className="button"
+                  aria-haspopup="true"
+                  aria-controls="dropdown-menu"
+                >
+                  <span className="icon-text">
+                    <span className="icon">
+                      <i className="fa fa-people-group"></i>
+                    </span>
+                    <span>Community</span>
+                  </span>
+                  <span className="icon is-small">
+                    <i className="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </button>
               </div>
+              {isOpen && (
+                <div className="dropdown-menu" id="dropdown-menu" role="menu">
+                  <div className="dropdown-content">
+                    <Link to="/sessions" className="navbar-item">
+                      <span className="icon-text">
+                        <span className="icon">
+                          <i className="fa fa-street-view"></i>
+                        </span>
+                        <span>Sessions</span>
+                      </span>
+                    </Link>
+                    <Link to="/community" className="navbar-item">
+                      <span className="icon-text">
+                        <span className="icon">
+                          <i className="fa fa-street-view"></i>
+                        </span>
+                        <span>Community</span>
+                      </span>
+                    </Link>
+                    <Link to="/movements" className="navbar-item">
+                      <span className="icon-text">
+                        <span className="icon">
+                          <i className="fa fa-street-view"></i>
+                        </span>
+                        <span>Movements</span>
+                      </span>
+                    </Link>
+                    <hr className="dropdown-divider" />
+                    <a href="#" className="dropdown-item">
+                      With a divider
+                    </a>
+                  </div>
+                </div>
+              )}
             </div>
-            <Link to="/community" className="navbar-item">
-              <span className="icon-text">
-                <span className="icon">
-                  <i className="fa fa-people-group"></i>
-                </span>
-                <span>Community</span>
-              </span>
-            </Link>
             <Link to="/about" className="navbar-item">
               <span className="icon-text">
                 <span className="icon">
