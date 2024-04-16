@@ -114,12 +114,14 @@ function Navbar({ user, setUser }: NavbarProps) {
             )}
             {/* Create a logout button, add a function logout to the onClick */}
             {user && (
-              <button
-                onClick={logout}
-                className="button logout has-text-light navbar-item is-ghost"
-              >
-                Logout
-              </button>
+              <div className="navbar-item">
+                <button
+                  onClick={logout}
+                  className="button logout has-text-dark is-ghost pl-0"
+                >
+                  Logout
+                </button>
+              </div>
             )}
           </div>
         </div>

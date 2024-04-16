@@ -30,13 +30,14 @@ export default function Signup() {
   async function handleSubmit(e: SyntheticEvent) {
     try {
       e.preventDefault();
-      if (formData.password === formData.confirmPassword) {
+      {
         const resp = await axios.post("/api/signup", formData);
       }
 
       navigate("/login");
     } catch (e: any) {
       setErrorData(e.response.data.errors);
+      console.log(e);
     }
   }
 
