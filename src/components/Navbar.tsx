@@ -62,7 +62,13 @@ function Navbar({ user, setUser }: NavbarProps) {
               {isOpen && (
                 <div className="dropdown-menu" id="dropdown-menu" role="menu">
                   <div className="dropdown-content">
-                    <Link to="/sessions" className="navbar-item">
+                    <Link
+                      to="/sessions"
+                      onClick={() => {
+                        setIsOpen(false);
+                      }}
+                      className="navbar-item"
+                    >
                       <span className="icon-text">
                         <span className="icon">
                           <i className="fa fa-street-view"></i>
@@ -70,7 +76,13 @@ function Navbar({ user, setUser }: NavbarProps) {
                         <span>Sessions</span>
                       </span>
                     </Link>
-                    <Link to="/posts" className="navbar-item">
+                    <Link
+                      to="/posts"
+                      onClick={() => {
+                        setIsOpen(false);
+                      }}
+                      className="navbar-item"
+                    >
                       <span className="icon-text">
                         <span className="icon">
                           <i className="fa fa-street-view"></i>
@@ -78,7 +90,13 @@ function Navbar({ user, setUser }: NavbarProps) {
                         <span>Community</span>
                       </span>
                     </Link>
-                    <Link to="/movements" className="navbar-item">
+                    <Link
+                      to="/movements"
+                      onClick={() => {
+                        setIsOpen(false);
+                      }}
+                      className="navbar-item"
+                    >
                       <span className="icon-text">
                         <span className="icon">
                           <i className="fa fa-street-view"></i>

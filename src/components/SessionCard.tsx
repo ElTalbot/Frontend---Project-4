@@ -1,19 +1,42 @@
 import { ISession } from "../interfaces/session";
 import { Link } from "react-router-dom";
 import React from "react";
+import { IUser } from "../interfaces/user";
 
-function Session({ id, date, day, capacity, user, name }: ISession) {
+interface SessionProps extends ISession {
+  onBook: (id: any) => void;
+  onCancel: () => void;
+}
+
+function Session({
+  id,
+  date,
+  day,
+  capacity,
+  user,
+  name,
+  onBook,
+  onCancel,
+}: SessionProps) {
   return (
-    <Link to={`/sessions/${id}`}>
-      <div className="card">
-        <div className="card-content">
-          <p>{name}</p>
-          <p>{day}</p>
-          <p>{date}</p>
-          <p>{capacity}</p>
-        </div>
+    <div className="card">
+      <div className="card-content">
+        <p>{name}</p>
+        <p>{day}</p>
+        <p>{date}</p>
+        <p>{capacity}</p>
       </div>
-    </Link>
+      {user && (
+        <span className="icon-text">
+          <span className="icon">
+            <i className="fa fa-pencil"></i>
+          </span>
+        </span>
+      )}
+      <button className="button" onClick={() => onBook(id)}>
+        Book
+      </button>
+    </div>
   );
 }
 

@@ -1,9 +1,22 @@
 import React, { SyntheticEvent, useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import axios, { formToJSON } from "axios";
+import { useNavigate, useParams } from "react-router-dom";
 
-export default function AddMovementModal({ onClose }: any) {
+export default function UpdateMovementModal({ onClose }: any) {
   const navigate = useNavigate();
+  const { movementId } = useParams();
+
+  React.useEffect(() => {
+    async function fetchMovement() {
+      const resp = await fetch(`/api/movements/${movementId}`);
+
+      const movementData = await resp.json();
+
+      setFormData(movementData);
+      // console.log("this is the", movementData);
+    }
+    fetchMovement();
+  }, [movementId]);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -23,6 +36,7 @@ export default function AddMovementModal({ onClose }: any) {
   function handleChange(e: any) {
     const fieldName = e.target.name;
     const newFormData = structuredClone(formData);
+    // console.log(newFormData)
     newFormData[fieldName as keyof typeof formData] = e.target.value;
     setFormData(newFormData);
   }
@@ -30,22 +44,20 @@ export default function AddMovementModal({ onClose }: any) {
   async function handleSubmit(e: SyntheticEvent) {
     e.preventDefault();
     const token = localStorage.getItem("token");
-
-    const resp = await axios.post("/api/movements", formData, {
+    console.log(token);
+    const resp = await axios.put(`/api/movements/${movementId}`, formData, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    onClose();
-
+    console.log("resp", resp.data);
     navigate("/movements");
-
-    console.log("token", resp);
   }
+
   return (
     <div className="modal is-active">
       <div className="modal-background">
         <div className="modal-content">
           <form onSubmit={handleSubmit}>
-            <div className="title is-size-2 pl-1 mb-5">Add Movement</div>
+            <div className="title is-size-2 pl-1 mb-5">Update Movement</div>
             {/* --------------NAME--------------- */}
             <div className="columns is-multiline p-1 mb-0">
               <div className="field column">

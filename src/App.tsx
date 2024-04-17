@@ -43,7 +43,10 @@ function App() {
         />
         <Route path="/sessions" element={<AllSessions user={user} />} />
         <Route path="/posts" element={<AllPosts />} />
-        <Route path="/movements/:movementId" element={<ShowMovement />} />
+        <Route
+          path="/movements/:movementId"
+          element={<ShowMovement user={user} />}
+        />
       </Routes>
     </Router>
   );

@@ -12,7 +12,6 @@ function AllMovements({ user }: { user: null | IUser }) {
   const [value, setValue] = React.useState("");
   const [search, setSearch] = React.useState("");
   const [showModal, setShowModal] = React.useState(false);
-  console.log(showModal);
 
   // Fetch all movements
   React.useEffect(() => {
@@ -21,7 +20,7 @@ function AllMovements({ user }: { user: null | IUser }) {
       const data = await resp.json();
       setMovements(data);
       setShowModal(false);
-      console.log("this is the data: ", data);
+      // console.log("this is the data: ", data);
     }
     fetchmovements();
   }, []);
@@ -40,7 +39,7 @@ function AllMovements({ user }: { user: null | IUser }) {
     setSearch(e.currentTarget.value);
   }
 
-  function handleAnimalChange(e: any) {
+  function handleMovementChange(e: any) {
     setValue(e.currentTarget.value);
   }
 
@@ -84,12 +83,14 @@ function AllMovements({ user }: { user: null | IUser }) {
                   <select
                     name="type"
                     value={value}
-                    onChange={handleAnimalChange}
+                    onChange={handleMovementChange}
                   >
                     <option value={""}>Select type</option>
-                    <option value="Land">Land</option>
-                    <option value="Water">Water</option>
-                    <option value="Domestic">Domestic</option>
+                    <option value="Strength">Strength</option>
+                    <option value="Resistance">Resistance</option>
+                    <option value="Mobilisation">Mobilisation</option>
+                    <option value="Stretching">Stretching</option>
+                    <option value="Cardop">Cardio</option>
                   </select>
                 </div>
               </div>
@@ -97,19 +98,6 @@ function AllMovements({ user }: { user: null | IUser }) {
           </div>
         </div>
       </div>
-
-      {/* <span className="is-flex mt-3">
-        {user && (
-          <Link to="/addmovement">
-            <button className="button is-light is-outlined mr-4">
-              Add Movement
-              <span className="icon ml-1">
-                <i className="fa fa-plus"></i>
-              </span>
-            </button>
-          </Link>
-        )}
-      </span> */}
       <span className="is-flex mt-3">
         {user && (
           <>
