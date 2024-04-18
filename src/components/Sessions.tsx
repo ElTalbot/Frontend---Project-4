@@ -51,37 +51,46 @@ function AllSessions({ user }: { user: null | IUser }) {
   }
 
   return (
-    <section className="section is-medium is-flex is-flex-direction-column mt-6">
-      <h1 className="title">Sessions</h1>
-      <h2 className="subtitle">Find the class that is right for you.</h2>
-      <div className="container">
-        <div className="columns is-multiline">
-          {sessions?.map((session: any) => {
-            return <Session key={session.id} onBook={booking} {...session} />;
-          })}
+    <section className="section is-flex is-flex-direction-column is-justify-self-center mx-6 mt-6">
+      <div className="is-flex is-flex-direction-row columns is-multiline column">
+        <div className="column is-half pb-0">
+          <h1 className="subtitle is-size-2 mb-2">Upcoming Classes</h1>
+          <h2 className="subtitle">
+            {user && user.username
+              ? `Hello ${user?.username}, let’s get booking - explore our upcoming
+              classes`
+              : "Welcome, explore our upcoming sessions"}
+          </h2>
+        </div>
+        <div className="container p-0 m-0 column is-align-self-flex-end">
+          <span className="is-flex is-justify-content-flex-end mt-3">
+            {user && (
+              <>
+                <button
+                  className="button book mr-4 mb-o"
+                  onClick={() => {
+                    setShowModal(true);
+
+                    console.log("hello is this working?");
+                  }}
+                >
+                  Add Session
+                  <span className="icon ml-1">
+                    <i className="fa fa-plus"></i>
+                  </span>
+                </button>
+                {showModal && <AddSessionModal onClose={handleCloseModal} />}
+              </>
+            )}
+          </span>
         </div>
       </div>
 
-      <span className="is-flex mt-3">
-        {user && (
-          <>
-            <button
-              className="button is-light is-outlined mr-4"
-              onClick={() => {
-                setShowModal(true);
-
-                console.log("hello is this working?");
-              }}
-            >
-              Add Session
-              <span className="icon ml-1">
-                <i className="fa fa-plus"></i>
-              </span>
-            </button>
-            {showModal && <AddSessionModal onClose={handleCloseModal} />}
-          </>
-        )}
-      </span>
+      <div className="columns is-multiline">
+        {sessions?.map((session: any) => {
+          return <Session key={session.id} onBook={booking} {...session} />;
+        })}
+      </div>
     </section>
   );
 }

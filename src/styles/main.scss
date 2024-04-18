@@ -11,6 +11,58 @@ $family-sans-serif: "Roboto", sans-serif;
   font-weight: bold;
 }
 
+.card-content.sessions {
+  width: 280px;
+  height: 120px;
+}
+
+body {
+  background-image: url(../src/assets/login.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 200px;
+}
+
+.custom-border-radius {
+  border-radius: 10px;
+}
+
+.login {
+  background-image: url(../src/assets/login.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 200px;
+}
+.container.homeheader {
+  display: flex;
+  flex-direction: column;
+}
+
+.container.add {
+  max-width: 440px;
+}
+.container.signup {
+  max-width: 540px;
+}
+
+.icon.homepage {
+  color: #b25d3e;
+}
+.button.community {
+  background-color: #e4b895;
+}
+
+.button.book {
+  height: 34px;
+  background-color: #e4b895;
+}
+.button.cancel {
+  height: 34px;
+  border-color: #e4b895;
+}
+
 .card-content {
   margin-top: auto;
 }

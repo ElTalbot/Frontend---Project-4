@@ -26,7 +26,7 @@ function Navbar({ user, setUser }: NavbarProps) {
 
   return (
     <header>
-      <nav className="navbar is-transparent is-fixed-top">
+      <nav className="navbar-is-transparent is-fixed-top">
         <div className="navbar-menu">
           <div className="navbar-brand navbar-start">
             <Link to="/">

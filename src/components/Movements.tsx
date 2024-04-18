@@ -62,65 +62,73 @@ function AllMovements({ user }: { user: null | IUser }) {
   };
 
   return (
-    <section className="section is-medium is-flex is-flex-direction-column mt-6">
-      <h1 className="title">Movements</h1>
-      <h2 className="subtitle">Find the movement that is right for you.</h2>
-      <div className=" searchbar column is-half is-pulled-left ">
-        <input
-          id="searchBar"
-          className="input is-normal"
-          placeholder="Search"
-          onChange={handleChange}
-          value={search}
-        />
-      </div>
-      <div className="field column is one-quarter">
-        <div className="dropdown is-active">
-          <div className="dropdown-trigger">
+    <section className="section is-flex is-flex-direction-column is-justify-self-center mx-6 mt-6">
+      <h1 className="subtitle is-size-2 mb-2">Movements</h1>
+      <h2 className="subtitle">
+        Empower yourself! And explore a world of movements .
+      </h2>
+      <div className="container is-widescreen m-0">
+        <div className="columns is-multiline">
+          {/* Search bar */}
+          <div className=" searchbar column is-half is-pulled-left ">
+            <input
+              id="searchBar"
+              className="input is-normal"
+              placeholder="Search"
+              onChange={handleChange}
+              value={search}
+            />
+          </div>
+          {/* Dropdown */}
+          <div className="field column">
             <div className="dropdown is-active">
               <div className="dropdown-trigger">
-                <div className="select is-hovered">
-                  <select
-                    name="type"
-                    value={value}
-                    onChange={handleMovementChange}
-                  >
-                    <option value={""}>Select type</option>
-                    <option value="Strength">Strength</option>
-                    <option value="Resistance">Resistance</option>
-                    <option value="Mobilisation">Mobilisation</option>
-                    <option value="Stretching">Stretching</option>
-                    <option value="Cardop">Cardio</option>
-                  </select>
+                <div className="dropdown is-active">
+                  <div className="dropdown-trigger">
+                    <div className="select is-hovered">
+                      <select
+                        name="type"
+                        value={value}
+                        onChange={handleMovementChange}
+                      >
+                        <option value={""}>Select type</option>
+                        <option value="Strength">Strength</option>
+                        <option value="Resistance">Resistance</option>
+                        <option value="Mobilisation">Mobilisation</option>
+                        <option value="Stretching">Stretching</option>
+                        <option value="Cardop">Cardio</option>
+                      </select>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+          {/* Add button */}
+          <span className="is-flex mt-3">
+            {user && (
+              <>
+                <button
+                  className="button is-outlined mr-4"
+                  onClick={() => {
+                    setShowModal(true);
+
+                    console.log("hello is this working?");
+                  }}
+                >
+                  Add Movement
+                  <span className="icon ml-1">
+                    <i className="fa fa-plus"></i>
+                  </span>
+                </button>
+                {showModal && <AddMovementModal onClose={handleCloseModal} />}
+              </>
+            )}
+          </span>
         </div>
       </div>
-      <span className="is-flex mt-3">
-        {user && (
-          <>
-            <button
-              className="button is-light is-outlined mr-4"
-              onClick={() => {
-                setShowModal(true);
-
-                console.log("hello is this working?");
-              }}
-            >
-              Add Movement
-              <span className="icon ml-1">
-                <i className="fa fa-plus"></i>
-              </span>
-            </button>
-            {showModal && <AddMovementModal onClose={handleCloseModal} />}
-          </>
-        )}
-      </span>
-
       <div className="container">
-        <div className="columns is-multiline">
+        <div className="columns is-multiline mt-0">
           {filterMovements()?.map((movement: any) => {
             return <Movement key={movement.id} {...movement} />;
           })}
