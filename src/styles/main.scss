@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
-@import url("../assets/Login.png");
+@import url("https://res.cloudinary.com/drmyhkqd7/image/upload/v1713526817/Login_hut01n.png");
 
 // ? Reassign any bulma variables
 $family-sans-serif: "Roboto", sans-serif;
@@ -18,7 +18,7 @@ $family-sans-serif: "Roboto", sans-serif;
 }
 
 body {
-  background-image: url(image);
+  background-image: url("https://res.cloudinary.com/drmyhkqd7/image/upload/v1713526817/Login_hut01n.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -30,7 +30,7 @@ body {
 }
 
 .login {
-  background-image: url(image);
+  background-image: url("https://res.cloudinary.com/drmyhkqd7/image/upload/v1713526817/Login_hut01n.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
