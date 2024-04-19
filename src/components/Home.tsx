@@ -1,6 +1,7 @@
 import React from "react";
 import { IUser } from "../interfaces/user";
 import { Link } from "react-router-dom";
+import image from "../src/assets/icon.png";
 
 function Home({ user }: { user: null | IUser }) {
   React.useEffect(() => {
@@ -59,7 +60,7 @@ function Home({ user }: { user: null | IUser }) {
           </div>
           <div className="column is-one-third">
             <figure className="image is-128x128">
-              <img src="./src/assets/icon.png" />
+              <img src={image} alt="Owlcore Logo" />
             </figure>
           </div>
         </div>
