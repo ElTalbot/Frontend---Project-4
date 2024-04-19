@@ -1,4 +1,5 @@
 import React from "react";
+import image from "../assets/Icon.png";
 
 import { Link } from "react-router-dom";
 
@@ -110,7 +111,7 @@ function About() {
                     </p>
                     <div className="column is-half">
                       <figure className="image is-128x128">
-                        <img src="./src/assets/certs.png" />
+                        <img src={image} alt="Owlcore Logo" />
                       </figure>
                     </div>
                   </div>

@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { IUser } from "../interfaces/user";
 import "@fortawesome/fontawesome-free/css/all.css";
 import { useState } from "react";
+import image from "../assets/Icon.png";
 
 interface NavbarProps {
   user: null | IUser;
@@ -28,19 +29,19 @@ function Navbar({ user, setUser }: NavbarProps) {
     <header>
       <nav className="navbar-is-transparent is-fixed-top">
         <div className="navbar-menu">
-          <div className="navbar-brand navbar-start">
+          <div className="navbar-start">
             <Link to="/">
               <img
                 width="64"
                 height="16"
                 className="navbar-item"
-                src="../src/assets/Icon.png"
+                src={image}
                 alt="Owlcore Icon"
               />
             </Link>
           </div>
           <div className="navbar-end">
-            <div className="navbar-item dropdown is-active">
+            <div className="navbar-item dropdown is-right is-active">
               <div className="dropdown-trigger">
                 <button
                   onClick={handleClick}
@@ -50,9 +51,9 @@ function Navbar({ user, setUser }: NavbarProps) {
                 >
                   <span className="icon-text">
                     <span className="icon">
-                      <i className="fa fa-people-group"></i>
+                      <i className="fa fa-binoculars"></i>
                     </span>
-                    <span>Community</span>
+                    <span>Explore</span>
                   </span>
                   <span className="icon is-small">
                     <i className="fas fa-angle-down" aria-hidden="true"></i>
@@ -71,7 +72,7 @@ function Navbar({ user, setUser }: NavbarProps) {
                     >
                       <span className="icon-text">
                         <span className="icon">
-                          <i className="fa fa-street-view"></i>
+                          <i className="fa fa-pen-to-square"></i>
                         </span>
                         <span>Sessions</span>
                       </span>
@@ -85,7 +86,7 @@ function Navbar({ user, setUser }: NavbarProps) {
                     >
                       <span className="icon-text">
                         <span className="icon">
-                          <i className="fa fa-street-view"></i>
+                          <i className="fa fa-people-group"></i>
                         </span>
                         <span>Community</span>
                       </span>
@@ -99,15 +100,11 @@ function Navbar({ user, setUser }: NavbarProps) {
                     >
                       <span className="icon-text">
                         <span className="icon">
-                          <i className="fa fa-street-view"></i>
+                          <i className="fa fa-person-walking"></i>
                         </span>
                         <span>Movements</span>
                       </span>
                     </Link>
-                    <hr className="dropdown-divider" />
-                    <a href="#" className="dropdown-item">
-                      With a divider
-                    </a>
                   </div>
                 </div>
               )}

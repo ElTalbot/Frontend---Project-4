@@ -44,7 +44,7 @@ export default function AddMovementModal({ onClose }: any) {
   return (
     <div className="modal is-active">
       <div className="modal-background">
-        <div className="modal-content">
+        <div className="modal-content card p-4">
           <form onSubmit={handleSubmit}>
             <div className="title is-size-2 pl-1 mb-5">Add Movement</div>
             {/* --------------NAME--------------- */}
@@ -257,7 +257,7 @@ export default function AddMovementModal({ onClose }: any) {
               </div>
             </div>
 
-            <button className="button mt-6">Submit</button>
+            <button className="button">Submit</button>
             <button
               className="modal-close is-large"
               aria-label="close"

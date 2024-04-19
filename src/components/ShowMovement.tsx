@@ -50,77 +50,181 @@ function ShowMovement({ user }: { user: null | IUser }) {
     return <p>Movement Loading...</p>;
   }
   return (
-    <section className="section is-medium container is-widescreen">
+    <section className="section is-small ">
       <div className="columns is-multiline">
-        <h2 className="column is-size-1">{movement.name}</h2>
         <div className="column is-flex is-justify-content-center is-flex-direction-column">
-          <div className="is-flex is-justify-content-space-between">
-            <p className="">Type</p>
-            <p className="">{movement.type}</p>
+          <h2 className="is-size-1">{movement.name}</h2>
+          <div className="type is-flex is-justify-content-space-between">
+            <p className="is-uppercase has-text-weight-bold ">Type</p>
+            <p>{movement.type}</p>
           </div>
-          <div className="is-flex is-justify-content-space-between">
-            <p className="">Equipment</p>
-            <p className="">{movement.equipment}</p>
+          <div className="type is-flex is-justify-content-space-between">
+            <p className="is-uppercase has-text-weight-bold type">Equipment</p>
+            <p>{movement.equipment}</p>
           </div>
         </div>
-      </div>
+        <div className="column is-flex is-flex-direction-row is-align-items-flex-end is-justify-content-flex-end">
+          <span className="is-flex mt-3">
+            {user && (
+              <>
+                <button
+                  className="button is-outlined mr-4"
+                  onClick={() => {
+                    setUpdateModal(true);
 
-      <div className="columns is-multiline">
-        <div className="column is-three-fifths">
-          <figure className="image is-16by9">
-            <iframe
-              className="has-ratio"
-              width="1600"
-              height="900"
-              src={movement.video}
-              frameBorder="0"
-              allowFullScreen
-            ></iframe>
-          </figure>
-        </div>
-        <div className="column">
-          <div>How do you do {movement.name}</div>
-          <div>{movement.descriptionOne}</div>
-          <div>{movement.descriptionTwo}</div>
-          <div>{movement.descriptionThree}</div>
-          <div>{movement.descriptionFour}</div>
-          <div>{movement.descriptionFive}</div>
-          <div>{movement.descriptionSix}</div>
-        </div>
-      </div>
-      <div>Adaption</div>
-      <div>{movement.adaption}</div>
-      <span className="is-flex mt-3">
-        {user && (
-          <>
+                    console.log("hello is this working?");
+                  }}
+                >
+                  Update Movement
+                  <span className="icon ml-1">
+                    <i className="fa fa-plus"></i>
+                  </span>
+                </button>
+                {updateModal && (
+                  <UpdateMovementModal onClose={handleCloseModal} />
+                )}
+              </>
+            )}
+          </span>
+          {user && (
             <button
-              className="button is-light is-outlined mr-4"
+              className="button is-danger"
               onClick={() => {
-                setUpdateModal(true);
-
-                console.log("hello is this working?");
+                setShowModal(true);
+                console.log("Is this working??");
               }}
             >
-              Update Movement
-              <span className="icon ml-1">
-                <i className="fa fa-plus"></i>
-              </span>
+              Delete {movement.name}
             </button>
-            {updateModal && <UpdateMovementModal onClose={handleCloseModal} />}
-          </>
-        )}
-      </span>
-      {user && (
-        <button
-          className="button is-danger"
-          onClick={() => {
-            setShowModal(true);
-            console.log("Is this working??");
-          }}
-        >
-          Delete {movement.name}
-        </button>
-      )}
+          )}
+        </div>
+      </div>
+      <div className="">
+        <figure className="image is-16by9">
+          <iframe
+            className="has-ratio"
+            width="1600"
+            height="900"
+            src={movement.video}
+            frameBorder="0"
+            allowFullScreen
+          ></iframe>
+        </figure>
+      </div>
+      <div className="mt-5">
+        <div className="description is-size-3 mb-2">
+          How do you do {movement.name}?
+        </div>
+        <div className="description">
+          <span className=" is-1 icon homepage is-medium">
+            <i className="fa-solid fa-1 fa-xl"></i>
+          </span>
+          <div className="ml-6 mb-3">{movement.descriptionOne}</div>
+        </div>
+        <div className="description">
+          <span className="is-1 icon homepage is-medium">
+            <i className="fa-solid fa-2 fa-xl"></i>
+          </span>
+          <div className="ml-6 mb-s">{movement.descriptionTwo}</div>
+        </div>
+        <div className="description">
+          <span className=" is-1 icon homepage is-medium">
+            <i className="fa-solid fa-3 fa-xl"></i>
+          </span>
+          <div className="ml-6 mb-3">{movement.descriptionThree}</div>
+        </div>
+        <div className="description">
+          <span className="is-1 icon homepage is-medium">
+            <i className="fa-solid fa-4 fa-xl"></i>
+          </span>
+          <div className="ml-6 mb-3">{movement.descriptionFour}</div>
+        </div>
+      </div>
+
+      <div className="box mt-6">
+        <div className="is-size-4">Adaption</div>
+
+        <div>{movement.adaption}</div>
+      </div>
+      <section className="is-small mx-4 mt-6 is-flex is-flex-direction-row is-justify-content-space-between">
+        <div className="is-align-self-flex-start is-flex">
+          <Link to="/">
+            <img
+              width="64"
+              height="16"
+              className="navbar-item"
+              src="../src/assets/Icon.png"
+              alt="Owlcore Icon"
+            />
+          </Link>
+        </div>
+        <div className="is-align-content-center">
+          <div className="columns is-multiline m-1">
+            <div className="mr-2 has-text-centered">
+              <Link to="/login">
+                <div>Login</div>
+              </Link>
+            </div>
+            <div className="ml-2 has-text-centered">
+              <Link to="/signup">
+                <div>Signup</div>
+              </Link>
+            </div>
+          </div>
+
+          <div className="has-text-centered">
+            <Link to="/about">
+              <div>About</div>
+            </Link>
+          </div>
+        </div>
+        <div>
+          <div className="columns is-multiline is-align-self-center m-2">
+            <a
+              href="https://www.instagram.com/owlcore3912/?igshid=MmIzYWVlNDQ5Yg%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="column icon-text is-align-items-center mr-1 p-0">
+                <span className="icon homepage is-medium">
+                  <i className="fa-brands fa-instagram fa-xl"></i>
+                </span>
+              </span>
+            </a>
+            <a
+              href="https://www.facebook.com/profile.php?id=100093828954295"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="column icon-text is-align-items-center mx-1 p-0">
+                <span className="icon homepage is-medium">
+                  <i className="fa-brands fa-facebook fa-xl"></i>
+                </span>
+              </span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/elizabeth-l-talbot/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="column icon-text is-align-items-center ml-1 p-0">
+                <span className="icon homepage is-medium">
+                  <i className="fa-brands fa-linkedin fa-xl"></i>
+                </span>
+              </span>
+            </a>
+          </div>
+          <div className="is-align-self-center">
+            <span className="column icon-text is-align-items-center p-0">
+              <span className="icon m-0">
+                <i className="fa-solid fa-copyright fa-sm"></i>
+              </span>
+              <span>2023 Owlcore</span>
+            </span>
+          </div>
+        </div>
+      </section>
+
       {showModal && (
         <div className="modal is-active">
           <div className="modal-background">

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { IUser } from "../interfaces/user";
 import AddMovementModal from "./AddMovement";
 import { baseUrl } from "../config";
+import image from "../assets/Icon.png";
 
 type Movements = null | Array<IMovement>;
 
@@ -135,6 +136,84 @@ function AllMovements({ user }: { user: null | IUser }) {
           })}
         </div>
       </div>
+      <section className="is-small mx-4 mt-6 is-flex is-flex-direction-row is-justify-content-space-between">
+        <div className="is-align-self-flex-start is-flex">
+          <Link to="/">
+            <img
+              width="64"
+              height="16"
+              className="navbar-item"
+              src={image}
+              alt="Owlcore Icon"
+            />
+          </Link>
+        </div>
+        <div className="is-align-content-center">
+          <div className="columns is-multiline m-1">
+            <div className="mr-2 has-text-centered">
+              <Link to="/login">
+                <div>Login</div>
+              </Link>
+            </div>
+            <div className="ml-2 has-text-centered">
+              <Link to="/signup">
+                <div>Signup</div>
+              </Link>
+            </div>
+          </div>
+
+          <div className="has-text-centered">
+            <Link to="/about">
+              <div>About</div>
+            </Link>
+          </div>
+        </div>
+        <div>
+          <div className="columns is-multiline is-align-self-center m-2">
+            <a
+              href="https://www.instagram.com/owlcore3912/?igshid=MmIzYWVlNDQ5Yg%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="column icon-text is-align-items-center mr-1 p-0">
+                <span className="icon homepage is-medium">
+                  <i className="fa-brands fa-instagram fa-xl"></i>
+                </span>
+              </span>
+            </a>
+            <a
+              href="https://www.facebook.com/profile.php?id=100093828954295"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="column icon-text is-align-items-center mx-1 p-0">
+                <span className="icon homepage is-medium">
+                  <i className="fa-brands fa-facebook fa-xl"></i>
+                </span>
+              </span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/elizabeth-l-talbot/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="column icon-text is-align-items-center ml-1 p-0">
+                <span className="icon homepage is-medium">
+                  <i className="fa-brands fa-linkedin fa-xl"></i>
+                </span>
+              </span>
+            </a>
+          </div>
+          <div className="is-align-self-center">
+            <span className="column icon-text is-align-items-center p-0">
+              <span className="icon m-0">
+                <i className="fa-solid fa-copyright fa-sm"></i>
+              </span>
+              <span>2023 Owlcore</span>
+            </span>
+          </div>
+        </div>
+      </section>
     </section>
   );
 }

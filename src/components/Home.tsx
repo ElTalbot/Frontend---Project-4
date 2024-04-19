@@ -113,7 +113,7 @@ function Home({ user }: { user: null | IUser }) {
         <div className="columns is-multiline">
           <div className="column is-two-fifths">
             <figure className="image is-16by9">
-              <img src="./src/assets/icon.png" />
+              <img src={image} alt="Owlcore Logo" />
             </figure>
           </div>
           <div className="column is-three-fifths pr-6">
@@ -192,7 +192,7 @@ function Home({ user }: { user: null | IUser }) {
           </div>
           <div className="column is-two-fifths">
             <figure className="image is-16by9">
-              <img src="./src/assets/icon.png" />
+              <img src={image} alt="Owlcore Logo" />
             </figure>
           </div>
         </div>
@@ -204,7 +204,7 @@ function Home({ user }: { user: null | IUser }) {
               width="64"
               height="16"
               className="navbar-item"
-              src="../src/assets/Icon.png"
+              src={image}
               alt="Owlcore Icon"
             />
           </Link>

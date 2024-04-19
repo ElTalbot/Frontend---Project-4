@@ -5,7 +5,8 @@ import { IUser } from "../interfaces/user";
 
 interface SessionProps extends ISession {
   onBook: (id: any) => void;
-  onCancel: () => void;
+  onCancel: (id: any) => void;
+  userBooked: boolean;
 }
 
 function Session({
@@ -17,6 +18,7 @@ function Session({
   name,
   onBook,
   onCancel,
+  userBooked,
 }: SessionProps) {
   return (
     <div className="card m-4">
@@ -34,10 +36,12 @@ function Session({
           </span>
         )}
         <div className="is-flex is-flex-direction-row mt-2">
-          <button className="button book" onClick={() => onBook(id)}>
-            Book
-          </button>
-          <button className="button cancel" onClick={() => onBook(id)}>
+          {!userBooked && (
+            <button className="button book" onClick={() => onBook(id)}>
+              Book
+            </button>
+          )}
+          <button className="button cancel" onClick={() => onCancel(id)}>
             Cancel
           </button>
         </div>

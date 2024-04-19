@@ -4,6 +4,10 @@
 // ? Reassign any bulma variables
 $family-sans-serif: "Roboto", sans-serif;
 
+.section {
+  max-width: 1200px;
+}
+
 .custom-height {
   max-height: 68px;
 }
@@ -15,6 +19,14 @@ $family-sans-serif: "Roboto", sans-serif;
 .card-content.sessions {
   width: 280px;
   height: 120px;
+}
+
+.type {
+  width: 200px;
+}
+
+.description {
+  max-width: 800px;
 }
 
 body {

@@ -14,6 +14,7 @@ function AllSessions({ user }: { user: null | IUser }) {
   const [showModal, setShowModal] = React.useState(false);
   const [book, setBook] = React.useState(null);
   const { sessionId } = useParams();
+  const [cancel, setCancel] = React.useState(null);
 
   React.useEffect(() => {
     async function fetchsessions() {
@@ -32,12 +33,12 @@ function AllSessions({ user }: { user: null | IUser }) {
 
   // -------------------BOOKING A SESSION------------------
 
-  async function bookSession(sessionId: any) {
-    const handleBooking = await fetch(`${baseUrl}/sessions/${sessionId}`);
-    const data = await handleBooking.json();
-    setBook(data);
-  }
-  bookSession(sessionId);
+  // async function bookSession(sessionId: any) {
+  //   const handleBooking = await fetch(`${baseUrl}/sessions/${sessionId}`);
+  //   const data = await handleBooking.json();
+  //   setBook(data);
+  // }
+  // bookSession(sessionId);
 
   async function booking(sessionId: any) {
     const token = localStorage.getItem("token");
@@ -48,6 +49,28 @@ function AllSessions({ user }: { user: null | IUser }) {
         headers: { Authorization: `Bearer ${token}` },
       }
     );
+    // console.log("This is resp is it?", resp);
+  }
+
+  // -----------------CANCELLING A SESSION----------------
+
+  // async function cancelSession(sessionId: any) {
+  //   const handleCancelling = await fetch(
+  //     `${baseUrl}/sessions/${sessionId}`
+  //   );
+  //   const cancelData = await handleCancelling.json();
+  //   setCancel(cancelData);
+  // }
+
+  // cancelSession(sessionId);
+
+  async function cancelling(sessionId: any) {
+    const token = localStorage.getItem("token");
+    console.log("Is this the token I want", token);
+    const resp = await axios.delete(`${baseUrl}/sessions/cancel`, {
+      data: { session_id: sessionId },
+      headers: { Authorization: `Bearer ${token}` },
+    });
     console.log("This is resp is it?", resp);
   }
 
@@ -89,7 +112,15 @@ function AllSessions({ user }: { user: null | IUser }) {
 
       <div className="columns is-multiline">
         {sessions?.map((session: any) => {
-          return <Session key={session.id} onBook={booking} {...session} />;
+          return (
+            <Session
+              key={session.id}
+              onBook={() => booking(session.id)}
+              onCancel={() => cancelling(session.id)}
+              {...session}
+              userBooked={session.userBooked}
+            />
+          );
         })}
       </div>
       <section className="is-small mx-4 mt-6 is-flex is-flex-direction-row is-justify-content-space-between">
