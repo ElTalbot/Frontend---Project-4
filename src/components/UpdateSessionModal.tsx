@@ -1,6 +1,7 @@
 import React, { SyntheticEvent, useState } from "react";
 import axios, { formToJSON } from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import { baseUrl } from "../config";
 
 export default function UpdateSessionModal({ onClose }: any) {
   const navigate = useNavigate();
@@ -8,7 +9,7 @@ export default function UpdateSessionModal({ onClose }: any) {
 
   React.useEffect(() => {
     async function fetchSession() {
-      const resp = await fetch(`/api/sessions/${sessionId}`);
+      const resp = await fetch(`${baseUrl}/sessions/${sessionId}`);
 
       const sessionData = await resp.json();
 
@@ -37,7 +38,7 @@ export default function UpdateSessionModal({ onClose }: any) {
     e.preventDefault();
     const token = localStorage.getItem("token");
     console.log(token);
-    const resp = await axios.put(`/api/sessions/${sessionId}`, formData, {
+    const resp = await axios.put(`${baseUrl}/sessions/${sessionId}`, formData, {
       headers: { Authorization: `Bearer ${token}` },
     });
     console.log("resp", resp.data);

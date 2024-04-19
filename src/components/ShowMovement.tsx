@@ -4,6 +4,7 @@ import { IMovement } from "../interfaces/movement";
 import axios from "axios";
 import { IUser } from "../interfaces/user";
 import UpdateMovementModal from "./UpdateMovementModal";
+import { baseUrl } from "../config";
 
 function ShowMovement({ user }: { user: null | IUser }) {
   const [movement, setMovement] = React.useState<IMovement | null>(null);
@@ -19,7 +20,7 @@ function ShowMovement({ user }: { user: null | IUser }) {
       const token = localStorage.getItem("token");
       console.log(token);
       console.log(movementId);
-      await axios.delete(`/api/movements/${movementId}`, {
+      await axios.delete(`${baseUrl}/movements/${movementId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -31,7 +32,7 @@ function ShowMovement({ user }: { user: null | IUser }) {
 
   React.useEffect(() => {
     async function fetchMovement() {
-      const resp = await fetch(`/api/movements/${movementId}`);
+      const resp = await fetch(`${baseUrl}/movements/${movementId}`);
 
       const movementData = await resp.json();
       setMovement(movementData);

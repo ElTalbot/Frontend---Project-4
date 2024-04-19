@@ -2,6 +2,7 @@ import React, { SyntheticEvent } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { baseUrl } from "../config";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ export default function Signup() {
     try {
       e.preventDefault();
       {
-        const resp = await axios.post("/api/signup", formData);
+        const resp = await axios.post(`${baseUrl}/signup`, formData);
       }
 
       navigate("/login");

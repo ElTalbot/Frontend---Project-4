@@ -1,6 +1,7 @@
 import React, { SyntheticEvent, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { baseUrl } from "../config";
 
 export default function AddMovementModal({ onClose }: any) {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ export default function AddMovementModal({ onClose }: any) {
     e.preventDefault();
     const token = localStorage.getItem("token");
 
-    const resp = await axios.post("/api/movements", formData, {
+    const resp = await axios.post(`${baseUrl}/movements`, formData, {
       headers: { Authorization: `Bearer ${token}` },
     });
     onClose();

@@ -1,6 +1,7 @@
 import React, { SyntheticEvent, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { baseUrl } from "../config";
 
 export default function AddSessionModal({ onClose }: any) {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ export default function AddSessionModal({ onClose }: any) {
     e.preventDefault();
     const token = localStorage.getItem("token");
 
-    const resp = await axios.post("/api/sessions", formData, {
+    const resp = await axios.post(`${baseUrl}/sessions`, formData, {
       headers: { Authorization: `Bearer ${token}` },
     });
     onClose();

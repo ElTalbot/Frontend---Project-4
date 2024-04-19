@@ -2,6 +2,7 @@ import React from "react";
 import Post from "./PostCard";
 import { IPost } from "../interfaces/post";
 import { Link } from "react-router-dom";
+import { baseUrl } from "../config";
 
 type Posts = null | Array<IPost>;
 
@@ -10,7 +11,7 @@ function AllPosts() {
 
   React.useEffect(() => {
     async function fetchposts() {
-      const resp = await fetch("/api/posts");
+      const resp = await fetch(`${baseUrl}/posts`);
       const data = await resp.json();
       setPosts(data);
       console.log("this is the data: ", data);

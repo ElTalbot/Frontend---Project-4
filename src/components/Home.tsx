@@ -78,19 +78,19 @@ function Home({ user }: { user: null | IUser }) {
             </div>
             <span className="column icon-text is-align-items-center pl-0 py-1 ">
               <span className="icon homepage is-medium">
-                <i className="fa-solid fa-compass fa-xl"></i>
+                <i className="fa-solid fa-hands-holding-circle fa-xl"></i>
               </span>
               <span>Inclusive</span>
             </span>
             <span className="column icon-text is-align-items-center pl-0 py-1">
               <span className="icon homepage is-medium">
-                <i className="fa-solid fa-compass fa-xl"></i>
+                <i className="fa-solid fa-ubuntu fa-xl"></i>
               </span>
               <span>Adaptable</span>
             </span>
             <span className="column icon-text is-align-items-center pl-0 py-1">
               <span className="icon homepage is-medium">
-                <i className="fa-solid fa-compass fa-xl"></i>
+                <i className="fa-solid fa-universal-access fa-xl"></i>
               </span>
               <span>Accessible</span>
             </span>
@@ -128,19 +128,19 @@ function Home({ user }: { user: null | IUser }) {
             </div>
             <span className="column icon-text is-align-items-center pl-0 py-1 ">
               <span className="icon homepage is-medium">
-                <i className="fa-solid fa-compass fa-xl"></i>
+                <i className="fa-solid fa-person-walking fa-xl"></i>
               </span>
               <span>Self-paced</span>
             </span>
             <span className="column icon-text is-align-items-center pl-0 py-1">
               <span className="icon homepage is-medium">
-                <i className="fa-solid fa-compass fa-xl"></i>
+                <i className="fa-solid fa-circle-check fa-xl"></i>
               </span>
               <span>Convenient</span>
             </span>
             <span className="column icon-text is-align-items-center pl-0 py-1">
               <span className="icon homepage is-medium">
-                <i className="fa-solid fa-compass fa-xl"></i>
+                <i className="fa-solid fa-arrows-split-up-and-left fa-xl"></i>
               </span>
               <span>Variations</span>
             </span>
@@ -168,19 +168,19 @@ function Home({ user }: { user: null | IUser }) {
             </div>
             <span className="column icon-text is-align-items-center pl-0 py-1 ">
               <span className="icon homepage is-medium">
-                <i className="fa-solid fa-compass fa-xl"></i>
+                <i className="fa-solid fa-people-group fa-xl"></i>
               </span>
               <span>Support</span>
             </span>
             <span className="column icon-text is-align-items-center pl-0 py-1">
               <span className="icon homepage is-medium">
-                <i className="fa-solid fa-compass fa-xl"></i>
+                <i className="fa-solid fa-hands-clapping fa-xl"></i>
               </span>
               <span>Empower</span>
             </span>
             <span className="column icon-text is-align-items-center pl-0 py-1">
               <span className="icon homepage is-medium">
-                <i className="fa-solid fa-compass fa-xl"></i>
+                <i className="fa-solid fa-handshake-simple fa-xl"></i>
               </span>
               <span>Connect</span>
             </span>

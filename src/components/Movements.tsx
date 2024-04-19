@@ -4,6 +4,7 @@ import { IMovement } from "../interfaces/movement";
 import { Link } from "react-router-dom";
 import { IUser } from "../interfaces/user";
 import AddMovementModal from "./AddMovement";
+import { baseUrl } from "../config";
 
 type Movements = null | Array<IMovement>;
 
@@ -16,7 +17,7 @@ function AllMovements({ user }: { user: null | IUser }) {
   // Fetch all movements
   React.useEffect(() => {
     async function fetchmovements() {
-      const resp = await fetch("/api/movements");
+      const resp = await fetch(`${baseUrl}/movements`);
       const data = await resp.json();
       setMovements(data);
       setShowModal(false);
@@ -28,7 +29,7 @@ function AllMovements({ user }: { user: null | IUser }) {
   // Fetch search bar and filter movements
   React.useEffect(() => {
     async function fetchMovement() {
-      const resp = await fetch(`api/movements?type=${value}`);
+      const resp = await fetch(`${baseUrl}/movements?type=${value}`);
       const movementData = await resp.json();
       setMovements(movementData);
     }

@@ -1,6 +1,7 @@
 import React, { SyntheticEvent, useState } from "react";
 import axios, { formToJSON } from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import { baseUrl } from "../config";
 
 export default function UpdateMovementModal({ onClose }: any) {
   const navigate = useNavigate();
@@ -8,7 +9,7 @@ export default function UpdateMovementModal({ onClose }: any) {
 
   React.useEffect(() => {
     async function fetchMovement() {
-      const resp = await fetch(`/api/movements/${movementId}`);
+      const resp = await fetch(`${baseUrl}/movements/${movementId}`);
 
       const movementData = await resp.json();
 
@@ -45,9 +46,13 @@ export default function UpdateMovementModal({ onClose }: any) {
     e.preventDefault();
     const token = localStorage.getItem("token");
     console.log(token);
-    const resp = await axios.put(`/api/movements/${movementId}`, formData, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const resp = await axios.put(
+      `${baseUrl}/movements/${movementId}`,
+      formData,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
     console.log("resp", resp.data);
     navigate("/movements");
   }

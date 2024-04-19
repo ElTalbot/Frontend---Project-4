@@ -2,6 +2,7 @@ import React, { SyntheticEvent } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { baseUrl } from "../config";
 
 export default function Login({ fetchUser }: { fetchUser: Function }) {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ export default function Login({ fetchUser }: { fetchUser: Function }) {
   async function handleSubmit(e: SyntheticEvent) {
     e.preventDefault();
 
-    const resp = await axios.post("api/login", formData);
+    const resp = await axios.post(`${baseUrl}/login`, formData);
     localStorage.setItem("token", resp.data.token);
     console.log("working?", resp);
 
