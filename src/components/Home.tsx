@@ -1,7 +1,7 @@
 import React from "react";
 import { IUser } from "../interfaces/user";
 import { Link } from "react-router-dom";
-import image from "../src/assets/icon.png";
+import image from "../assets/Icon.png";
 
 function Home({ user }: { user: null | IUser }) {
   React.useEffect(() => {
@@ -102,7 +102,7 @@ function Home({ user }: { user: null | IUser }) {
           </div>
           <div className="column is-two-fifths">
             <figure className="image is-16by9">
-              <img src="./src/assets/icon.png" />
+              <img src={image} alt="Owlcore Logo" />
             </figure>
           </div>
         </div>
