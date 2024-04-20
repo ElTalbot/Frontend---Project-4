@@ -8,6 +8,11 @@ $family-sans-serif: "Roboto", sans-serif;
   max-width: 1200px;
 }
 
+.navbar-item {
+  &:hover {
+    background-color: #b25d3e;
+  }
+}
 .custom-height {
   max-height: 68px;
 }
@@ -70,10 +75,6 @@ body {
 .button.book {
   height: 34px;
   background-color: #e4b895;
-}
-.button.cancel {
-  height: 34px;
-  border-color: #e4b895;
 }
 
 .card-content {

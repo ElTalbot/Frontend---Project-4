@@ -7,10 +7,12 @@ import AddSessionModal from "./AddSession";
 import axios from "axios";
 import { baseUrl } from "../config";
 
-type Sessions = null | Array<ISession>;
+// type Sessions = null | Array<ISession>;
+type SessionWithBooking = ISession & { user_booked: boolean };
 
 function AllSessions({ user }: { user: null | IUser }) {
-  const [sessions, setSessions] = React.useState<Sessions>(null);
+  // const [sessions, setSessions] = React.useState<Sessions>(null);
+  const [sessions, setSessions] = React.useState<SessionWithBooking[]>([]);
   const [showModal, setShowModal] = React.useState(false);
   const [book, setBook] = React.useState(null);
   const { sessionId } = useParams();
@@ -20,6 +22,8 @@ function AllSessions({ user }: { user: null | IUser }) {
     async function fetchsessions() {
       const resp = await fetch(`${baseUrl}/sessions`);
       const data = await resp.json();
+      const sessionsWithBooking: SessionWithBooking[] = resp.json.user_booked;
+      setSessions(sessionsWithBooking);
       setSessions(data);
       setShowModal(false);
       console.log("this is the data: ", data);

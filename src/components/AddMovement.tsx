@@ -48,25 +48,25 @@ export default function AddMovementModal({ onClose }: any) {
           <form onSubmit={handleSubmit}>
             <div className="title is-size-2 pl-1 mb-5">Add Movement</div>
             {/* --------------NAME--------------- */}
-            <div className="columns is-multiline p-1 mb-0">
-              <div className="field column">
-                <div className="control has-icons-right">
-                  <input
-                    className="input"
-                    placeholder="Name"
-                    type="text"
-                    name={"name"}
-                    onChange={handleChange}
-                    value={formData.name}
-                  />
-                  <span className="icon is-small is-right">
-                    <i className="fas fa-paw"></i>
-                  </span>
-                </div>
+
+            <div className="field p-1 mb-1">
+              <div className="control has-icons-right">
+                <input
+                  className="input"
+                  placeholder="Name"
+                  type="text"
+                  name={"name"}
+                  onChange={handleChange}
+                  value={formData.name}
+                />
+                <span className="icon is-small is-right">
+                  <i className="fas fas fa-user"></i>
+                </span>
               </div>
             </div>
+
             {/* --------------DESCRIPTIONONE-------------- */}
-            <div className="field column">
+            <div className="field p-1 mb-1">
               <div className="control has-icons-right">
                 <input
                   className="input"
@@ -77,12 +77,12 @@ export default function AddMovementModal({ onClose }: any) {
                   value={formData.descriptionOne}
                 />
                 <span className="icon is-small is-right">
-                  <i className="fas fa-hippo"></i>
+                  <i className="fas fa-1"></i>
                 </span>
               </div>
             </div>
             {/* --------------DESCRIPTIONTWO--------------- */}
-            <div className="field column">
+            <div className="field p-1 mb-1">
               <div className="control has-icons-right">
                 <input
                   className="input"
@@ -93,12 +93,12 @@ export default function AddMovementModal({ onClose }: any) {
                   value={formData.descriptionTwo}
                 />
                 <span className="icon is-small is-right">
-                  <i className="fas fa-hippo"></i>
+                  <i className="fas fa-2"></i>
                 </span>
               </div>
             </div>
             {/* --------------DESCRIPTIONTHREE------------- */}
-            <div className="field column">
+            <div className="field p-1 mb-1">
               <div className="control has-icons-right">
                 <input
                   className="input"
@@ -109,12 +109,12 @@ export default function AddMovementModal({ onClose }: any) {
                   value={formData.descriptionThree}
                 />
                 <span className="icon is-small is-right">
-                  <i className="fas fa-hippo"></i>
+                  <i className="fas fa-3"></i>
                 </span>
               </div>
             </div>
             {/* --------------DESCRIPTIONFOUR--------------- */}
-            <div className="field column">
+            <div className="field p-1 mb-1">
               <div className="control has-icons-right">
                 <input
                   className="input"
@@ -125,12 +125,12 @@ export default function AddMovementModal({ onClose }: any) {
                   value={formData.descriptionFour}
                 />
                 <span className="icon is-small is-right">
-                  <i className="fas fa-hippo"></i>
+                  <i className="fas fa-4"></i>
                 </span>
               </div>
             </div>
             {/* -------------DESCRIPTIONFIVE---------------- */}
-            <div className="field column">
+            <div className="field p-1 mb-1">
               <div className="control has-icons-right">
                 <input
                   className="input"
@@ -141,12 +141,12 @@ export default function AddMovementModal({ onClose }: any) {
                   value={formData.descriptionFive}
                 />
                 <span className="icon is-small is-right">
-                  <i className="fas fa-hippo"></i>
+                  <i className="fas fa-5"></i>
                 </span>
               </div>
             </div>
             {/* -------------DESCRIPTIONSIX------------------ */}
-            <div className="field column">
+            <div className="field p-1 mb-1">
               <div className="control has-icons-right">
                 <input
                   className="input"
@@ -157,13 +157,13 @@ export default function AddMovementModal({ onClose }: any) {
                   value={formData.descriptionSix}
                 />
                 <span className="icon is-small is-right">
-                  <i className="fas fa-hippo"></i>
+                  <i className="fas fa-6"></i>
                 </span>
               </div>
             </div>
 
             {/* --------------IMAGE-------------------------- */}
-            <div className="field p-1">
+            <div className="field p-1 mb-1">
               <div className="control has-icons-right">
                 <input
                   className="input"
@@ -174,13 +174,13 @@ export default function AddMovementModal({ onClose }: any) {
                   value={formData.image}
                 />
                 <span className="icon is-small is-right">
-                  <i className="fas fa-photo-film"></i>
+                  <i className="fas fa-camera"></i>
                 </span>
               </div>
             </div>
 
             {/* ---------------TYPE--------------------------- */}
-            <div className="field is-flex is-justify-content-space-between p-1">
+            <div className="field is-flex is-justify-content-space-between p-1 mb-1">
               <label className="label">Type</label>
               <div className="dropdown is-active">
                 <div className="dropdown-trigger">
@@ -207,7 +207,7 @@ export default function AddMovementModal({ onClose }: any) {
             </div>
 
             {/* ----------------EQUIPMENT=-------------------- */}
-            <div className="field column">
+            <div className="field p-1 mb-1">
               <div className="control has-icons-right">
                 <input
                   className="input"
@@ -218,13 +218,13 @@ export default function AddMovementModal({ onClose }: any) {
                   value={formData.equipment}
                 />
                 <span className="icon is-small is-right">
-                  <i className="fas fa-hippo"></i>
+                  <i className="fas fa-dumbbell"></i>
                 </span>
               </div>
             </div>
 
             {/* --------------VIDEO-------------------------- */}
-            <div className="field p-1">
+            <div className="field p-1 mb-1">
               <div className="control has-icons-right">
                 <input
                   className="input"
@@ -241,7 +241,7 @@ export default function AddMovementModal({ onClose }: any) {
             </div>
 
             {/* ----------------ADAPTION=-------------------- */}
-            <div className="field column">
+            <div className="field p-1 mb-1">
               <div className="control has-icons-right">
                 <input
                   className="input"
@@ -252,7 +252,7 @@ export default function AddMovementModal({ onClose }: any) {
                   value={formData.adaption}
                 />
                 <span className="icon is-small is-right">
-                  <i className="fas fa-hippo"></i>
+                  <i className="fas fa-rotate-right"></i>
                 </span>
               </div>
             </div>

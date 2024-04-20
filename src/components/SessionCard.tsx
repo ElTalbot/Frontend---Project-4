@@ -20,6 +20,17 @@ function Session({
   onCancel,
   userBooked,
 }: SessionProps) {
+  const [showBookModal, setShowBookModal] = React.useState(false);
+
+  const handleBookClick = () => {
+    onBook(id);
+    setShowBookModal(true);
+  };
+
+  const handleCloseBook = () => {
+    setShowBookModal(false);
+  };
+
   return (
     <div className="card m-4">
       <div className="card-content sessions is-flex is-flex-direction-column p-4">
@@ -37,7 +48,7 @@ function Session({
         )}
         <div className="is-flex is-flex-direction-row mt-2">
           {!userBooked && (
-            <button className="button book" onClick={() => onBook(id)}>
+            <button className="button book" onClick={handleBookClick}>
               Book
             </button>
           )}
@@ -46,6 +57,25 @@ function Session({
           </button>
         </div>
       </div>
+
+      {showBookModal && (
+        <div className="modal is-active">
+          <div className="modal-background">
+            <div className="modal-content card p-6">
+              <h1 className="is-size-4 has-text-centered">
+                Thank you for booking on this session - we look forward to
+                seeing you there
+                <span className="column icon-text is-align-items-center p-0">
+                  <span className="icon m-2">
+                    <i className="fa-solid fa-face-smile"></i>
+                  </span>
+                </span>
+              </h1>
+            </div>
+            <button onClick={handleCloseBook}>close</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -228,10 +228,11 @@ function ShowMovement({ user }: { user: null | IUser }) {
       {showModal && (
         <div className="modal is-active">
           <div className="modal-background">
-            <div className="modal-content">
-              <div className="box">
-                <h1>Are you sure you want to delete this movement?</h1>
-
+            <div className="modal-content card p-4">
+              <h1 className="is-size-4 has-text-centered pb-5">
+                Are you sure you want to delete this movement?
+              </h1>
+              <div className="is-flex is-justify-content-space-between px-6 mb-2">
                 <button onClick={deleteMovement} className="button is-danger">
                   Delete {movement.name}
                 </button>
@@ -240,7 +241,7 @@ function ShowMovement({ user }: { user: null | IUser }) {
                     setShowModal(false);
                     console.log("working??");
                   }}
-                  className="button is-link"
+                  className="button is-outlined"
                 >
                   Cancel
                 </button>

@@ -42,81 +42,78 @@ export default function AddSessionModal({ onClose }: any) {
             <div className="title is-size-2 pl-1 mb-5">Add Session</div>
 
             {/* ---------------NAME---------------------- */}
-            <div className="columns is-multiline p-1 mb-0">
-              <div className="field column">
-                <div className="control has-icons-right">
-                  <input
-                    className="input"
-                    placeholder="Name"
-                    type="text"
-                    name={"name"}
-                    onChange={handleChange}
-                    value={formData.name}
-                  />
-                  <span className="icon is-small is-right">
-                    <i className="fas fa-id-badge"></i>
-                  </span>
-                </div>
+
+            <div className="field p-1 mb-1">
+              <div className="control has-icons-right">
+                <input
+                  className="input"
+                  placeholder="Name"
+                  type="text"
+                  name={"name"}
+                  onChange={handleChange}
+                  value={formData.name}
+                />
+                <span className="icon is-small is-right">
+                  <i className="fas fa-id-badge"></i>
+                </span>
               </div>
             </div>
 
             {/* ---------------DAY---------------------- */}
-            <div className="columns is-multiline p-1 mb-0">
-              <div className="field column">
-                <div className="control has-icons-right">
-                  <input
-                    className="input"
-                    placeholder="Day"
-                    type="text"
-                    name={"day"}
-                    onChange={handleChange}
-                    value={formData.day}
-                  />
-                  <span className="icon is-small is-right">
-                    <i className="fas fa-sun"></i>
-                  </span>
-                </div>
+
+            <div className="field p-1 mb-1">
+              <div className="control has-icons-right">
+                <input
+                  className="input"
+                  placeholder="Day"
+                  type="text"
+                  name={"day"}
+                  onChange={handleChange}
+                  value={formData.day}
+                />
+                <span className="icon is-small is-right">
+                  <i className="fas fa-sun"></i>
+                </span>
               </div>
             </div>
 
             {/* ---------------DATE---------------------- */}
-            <div className="columns is-multiline p-1 mb-0">
-              <div className="field column">
-                <div className="control has-icons-right">
-                  <input
-                    className="input"
-                    placeholder="Date"
-                    type="date"
-                    name={"date"}
-                    onChange={handleChange}
-                    value={formData.date}
-                  />
-                  <span className="icon is-small is-right">
-                    <i className="fas fa-calendar-days"></i>
-                  </span>
-                </div>
+
+            <div className="field p-1 mb-1">
+              <div className="control has-icons-right">
+                <input
+                  className="input"
+                  placeholder="Date"
+                  type="date"
+                  name={"date"}
+                  onChange={handleChange}
+                  value={formData.date}
+                />
+                <span className="icon is-small is-right">
+                  <i className="fas fa-calendar-days"></i>
+                </span>
               </div>
             </div>
 
             {/* ---------------CAPACITY---------------------- */}
-            <div className="columns is-multiline p-1 mb-0">
-              <div className="field column">
-                <div className="control has-icons-right">
-                  <input
-                    className="input"
-                    placeholder="Capacity"
-                    type="text"
-                    name={"capacity"}
-                    onChange={handleChange}
-                    value={formData.capacity}
-                  />
-                  <span className="icon is-small is-right">
-                    <i className="fas fa-people-roof"></i>
-                  </span>
-                </div>
+
+            <div className="field p-1 mb-1">
+              <div className="control has-icons-right">
+                <input
+                  className="input"
+                  placeholder="Capacity"
+                  type="text"
+                  name={"capacity"}
+                  onChange={handleChange}
+                  value={formData.capacity}
+                />
+                <span className="icon is-small is-right">
+                  <i className="fas fa-people-roof"></i>
+                </span>
               </div>
             </div>
-            <button className="button">Submit</button>
+
+            <button className="button book">Submit</button>
             <button
               className="modal-close is-large"
               aria-label="close"
