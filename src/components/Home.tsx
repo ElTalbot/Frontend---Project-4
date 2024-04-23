@@ -2,10 +2,13 @@ import React from "react";
 import { IUser } from "../interfaces/user";
 import { Link } from "react-router-dom";
 import image from "../assets/Icon.png";
+import about from "../assets/community.png";
+import session from "../assets/session.png";
 
 function Home({ user }: { user: null | IUser }) {
   React.useEffect(() => {
     console.log("The Home Page has mounted");
+    console.log("user", user);
   }, []);
 
   return (
@@ -54,13 +57,20 @@ function Home({ user }: { user: null | IUser }) {
                 </div>
               </div>
             </div>
-            <Link to="/signup">
-              <button className="button community">Sign Up</button>
-            </Link>
+            {!user && (
+              <Link to="/signup">
+                <button className="button community">Sign Up</button>
+              </Link>
+            )}
+            {user && (
+              <Link to="/movements">
+                <button className="button community">Explore</button>
+              </Link>
+            )}
           </div>
           <div className="column is-one-third">
             <figure className="image is-128x128">
-              <img src={image} alt="Owlcore Logo" />
+              <img src={session} alt="Owlcore Logo" />
             </figure>
           </div>
         </div>
@@ -96,13 +106,22 @@ function Home({ user }: { user: null | IUser }) {
               <span>Accessible</span>
             </span>
 
-            <Link to="/signup">
-              <button className="button community">Sign Up</button>
-            </Link>
+            {!user && (
+              <Link to="/signup">
+                <button className="button community">Sign Up</button>
+              </Link>
+            )}
+            {user && (
+              <Link to="/sessions">
+                <button className="button community">
+                  Find your next class
+                </button>
+              </Link>
+            )}
           </div>
           <div className="column is-two-fifths">
             <figure className="image is-16by9">
-              <img src={image} alt="Owlcore Logo" />
+              <img src={session} alt="Owlcore Logo" />
             </figure>
           </div>
         </div>
@@ -113,7 +132,7 @@ function Home({ user }: { user: null | IUser }) {
         <div className="columns is-multiline">
           <div className="column is-two-fifths">
             <figure className="image is-16by9">
-              <img src={image} alt="Owlcore Logo" />
+              <img src={session} alt="Owlcore Logo" />
             </figure>
           </div>
           <div className="column is-three-fifths pr-6">
@@ -186,13 +205,22 @@ function Home({ user }: { user: null | IUser }) {
               <span>Connect</span>
             </span>
 
-            <Link to="/signup">
-              <button className="button community">Signup</button>
-            </Link>
+            {!user && (
+              <Link to="/signup">
+                <button className="button community">Sign Up</button>
+              </Link>
+            )}
+            {user && (
+              <Link to="/posts">
+                <button className="button community">
+                  Discover your community
+                </button>
+              </Link>
+            )}
           </div>
           <div className="column is-two-fifths">
             <figure className="image is-16by9">
-              <img src={image} alt="Owlcore Logo" />
+              <img src={about} alt="Owlcore Logo" />
             </figure>
           </div>
         </div>
@@ -204,7 +232,7 @@ function Home({ user }: { user: null | IUser }) {
               width="64"
               height="16"
               className="navbar-item"
-              src={image}
+              src={session}
               alt="Owlcore Icon"
             />
           </Link>

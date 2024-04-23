@@ -2,8 +2,12 @@ import React, { SyntheticEvent, useState } from "react";
 import axios, { formToJSON } from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { baseUrl } from "../config";
+import { IUser } from "../interfaces/user";
 
-export default function UpdateMovementModal({ onClose }: any) {
+export default function UpdateMovementModal(
+  { onClose }: any,
+  { user }: { user: null | IUser }
+) {
   const navigate = useNavigate();
   const { movementId } = useParams();
 
@@ -14,6 +18,7 @@ export default function UpdateMovementModal({ onClose }: any) {
       const movementData = await resp.json();
 
       setFormData(movementData);
+      console.log("user..", user);
       // console.log("this is the", movementData);
     }
     fetchMovement();

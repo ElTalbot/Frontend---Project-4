@@ -22,6 +22,7 @@ function AllMovements({ user }: { user: null | IUser }) {
       const data = await resp.json();
       setMovements(data);
       setShowModal(false);
+      console.log("user", user?.username);
       // console.log("this is the data: ", data);
     }
     fetchmovements();
@@ -132,7 +133,7 @@ function AllMovements({ user }: { user: null | IUser }) {
       <div className="container">
         <div className="columns is-multiline mt-0">
           {filterMovements()?.map((movement: any) => {
-            return <Movement key={movement.id} {...movement} />;
+            return <Movement key={movement.id} {...movement} user={user} />;
           })}
         </div>
       </div>

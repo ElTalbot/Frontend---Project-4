@@ -40,27 +40,27 @@ function ShowMovement({ user }: { user: null | IUser }) {
       setUpdateModal(false);
     }
     fetchMovement();
-  }, []);
+  }, [user]);
 
   const handleCloseModal = () => {
     setUpdateModal(false);
   };
 
-  if (!movement) {
+  if (!movement && movement) {
     return <p>Movement Loading...</p>;
   }
   return (
     <section className="section is-small ">
       <div className="columns is-multiline">
         <div className="column is-flex is-justify-content-center is-flex-direction-column">
-          <h2 className="is-size-1">{movement.name}</h2>
+          <h2 className="is-size-1">{movement && movement.name}</h2>
           <div className="type is-flex is-justify-content-space-between">
             <p className="is-uppercase has-text-weight-bold ">Type</p>
-            <p>{movement.type}</p>
+            <p>{movement && movement.type}</p>
           </div>
           <div className="type is-flex is-justify-content-space-between">
             <p className="is-uppercase has-text-weight-bold type">Equipment</p>
-            <p>{movement.equipment}</p>
+            <p>{movement && movement.equipment}</p>
           </div>
         </div>
         <div className="column is-flex is-flex-direction-row is-align-items-flex-end is-justify-content-flex-end">
@@ -94,7 +94,7 @@ function ShowMovement({ user }: { user: null | IUser }) {
                 console.log("Is this working??");
               }}
             >
-              Delete {movement.name}
+              Delete {movement && movement.name}
             </button>
           )}
         </div>
@@ -105,7 +105,7 @@ function ShowMovement({ user }: { user: null | IUser }) {
             className="has-ratio"
             width="1600"
             height="900"
-            src={movement.video}
+            src={movement && movement.video}
             frameBorder="0"
             allowFullScreen
           ></iframe>
@@ -113,38 +113,42 @@ function ShowMovement({ user }: { user: null | IUser }) {
       </div>
       <div className="mt-5">
         <div className="description is-size-3 mb-2">
-          How do you do {movement.name}?
+          How do you do {movement && movement.name}?
         </div>
         <div className="description">
           <span className=" is-1 icon homepage is-medium">
             <i className="fa-solid fa-1 fa-xl"></i>
           </span>
-          <div className="ml-6 mb-3">{movement.descriptionOne}</div>
+          <div className="ml-6 mb-3">{movement && movement.descriptionOne}</div>
         </div>
         <div className="description">
           <span className="is-1 icon homepage is-medium">
             <i className="fa-solid fa-2 fa-xl"></i>
           </span>
-          <div className="ml-6 mb-s">{movement.descriptionTwo}</div>
+          <div className="ml-6 mb-s">{movement && movement.descriptionTwo}</div>
         </div>
         <div className="description">
           <span className=" is-1 icon homepage is-medium">
             <i className="fa-solid fa-3 fa-xl"></i>
           </span>
-          <div className="ml-6 mb-3">{movement.descriptionThree}</div>
+          <div className="ml-6 mb-3">
+            {movement && movement.descriptionThree}
+          </div>
         </div>
         <div className="description">
           <span className="is-1 icon homepage is-medium">
             <i className="fa-solid fa-4 fa-xl"></i>
           </span>
-          <div className="ml-6 mb-3">{movement.descriptionFour}</div>
+          <div className="ml-6 mb-3">
+            {movement && movement.descriptionFour}
+          </div>
         </div>
       </div>
 
       <div className="box mt-6">
         <div className="is-size-4">Adaption</div>
 
-        <div>{movement.adaption}</div>
+        <div>{movement && movement.adaption}</div>
       </div>
       <section className="is-small mx-4 mt-6 is-flex is-flex-direction-row is-justify-content-space-between">
         <div className="is-align-self-flex-start is-flex">
@@ -230,11 +234,12 @@ function ShowMovement({ user }: { user: null | IUser }) {
           <div className="modal-background">
             <div className="modal-content card p-4">
               <h1 className="is-size-4 has-text-centered pb-5">
-                Are you sure you want to delete this movement?
+                Are you sure you want to delete this {movement && movement.name}
+                ?
               </h1>
               <div className="is-flex is-justify-content-space-between px-6 mb-2">
                 <button onClick={deleteMovement} className="button is-danger">
-                  Delete {movement.name}
+                  Delete {movement && movement.name}
                 </button>
                 <button
                   onClick={() => {

@@ -12,21 +12,23 @@ import Login from "./components/Login";
 import AllPosts from "./components/Posts";
 import About from "./components/About";
 import AddMovementModal from "./components/AddMovement";
+import { baseUrl } from "./config";
 
 function App() {
   const [user, setUser] = useState(null);
   async function fetchUser() {
     const token = localStorage.getItem("token");
-    const resp = await axios.get("/api/user", {
+    const resp = await axios.get(`${baseUrl}/user`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    console.log("token", token);
+    console.log("This is the resp.data", token);
     setUser(resp.data);
   }
   //if there is a token (so if user logged in) it will fetch the user
-  useEffect(() => {
+  React.useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) fetchUser();
+    console.log("This is the user", user);
   }, []);
   return (
     <Router>
@@ -42,11 +44,12 @@ function App() {
           element={<AddMovementModal onClose user={user} />}
         />
         <Route path="/sessions" element={<AllSessions user={user} />} />
-        <Route path="/posts" element={<AllPosts />} />
+        <Route path="/posts" element={<AllPosts user={user} />} />
         <Route
           path="/movements/:movementId"
           element={<ShowMovement user={user} />}
         />
+        <Route path="/posts/:postId" element={<AllPosts user={user} />} />
       </Routes>
     </Router>
   );

@@ -9,8 +9,8 @@ function About() {
   }, []);
 
   return (
-    <section className="section home m-0">
-      <section className="hero is-fullheight is-justify-content-center">
+    <section className="mx-6 is-flex is-flex-direction-column">
+      <section className="section is-medium">
         <div className="">
           <section>
             <div className="hero-body hometext has-text-centered is-flex-grow-0 custom-border-radius is-flex-direction-column is-align-self-center">
@@ -31,20 +31,29 @@ function About() {
                 </p>
               </div>
             </div>
-            {/* Section for classes */}
             <div className="container">
-              <h1>Owlcore at it's heart</h1>
+              <h1 className="is-size-2 mb-2">Owlcore at it's heart</h1>
               <div>
-                <p>
+                <p className="is-size-5 my-4">
                   Herewith begin the tale as old as.. well.. the origin of
                   Owlcore
                 </p>
                 <p>
-                  Let me start by painting the scene - It’s March 2020, there is
-                  a worldwide lockdown, a mass shutting of borders, a small town
-                  in the middle of New South Wales Australia, a deserted, quiet
-                  holiday park, housing an isolated holiday cabin and at this
-                  moment in time home to 3 stranded British Tourists with
+                  Let me start by painting the scene - It’s{" "}
+                  <span className="is-uppercase is-size-4">March 2020, </span>
+                  there is a worldwide{" "}
+                  <span className="is-uppercase is-size-4">lockdown</span>, a
+                  mass{" "}
+                  <span className="is-uppercase is-size-4">
+                    shutting of borders
+                  </span>
+                  , a small town in the middle of New South Wales{" "}
+                  <span className="is-uppercase is-size-4">Australia</span>, a
+                  deserted, quiet{" "}
+                  <span className="is-uppercase is-size-4">holiday park</span>,
+                  housing an isolated holiday
+                  <span className="is-uppercase is-size-4">cabin</span> and at
+                  this moment in time home to 3 stranded British Tourists with
                   currently no way of returning home
                 </p>
                 <h2>3 Stranded Tourists</h2>

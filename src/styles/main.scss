@@ -8,11 +8,6 @@ $family-sans-serif: "Roboto", sans-serif;
   max-width: 1200px;
 }
 
-.navbar-item {
-  &:hover {
-    background-color: #b25d3e;
-  }
-}
 .custom-height {
   max-height: 68px;
 }
@@ -47,10 +42,6 @@ body {
 }
 
 .login {
-  background-image: url("https://res.cloudinary.com/drmyhkqd7/image/upload/v1713526817/Login_hut01n.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
   margin: 200px;
 }
 .container.homeheader {
@@ -75,6 +66,17 @@ body {
 .button.book {
   height: 34px;
   background-color: #e4b895;
+}
+.button.cancel {
+  height: 34px;
+}
+
+.button.bin {
+  background-color: rgba(250, 250, 250, 0);
+  border: none;
+}
+.title.spread {
+  max-width: 390px;
 }
 
 .card-content {

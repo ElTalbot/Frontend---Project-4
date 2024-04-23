@@ -63,34 +63,38 @@ function Navbar({ user, setUser }: NavbarProps) {
               {isOpen && (
                 <div className="dropdown-menu" id="dropdown-menu" role="menu">
                   <div className="dropdown-content">
-                    <Link
-                      to="/sessions"
-                      onClick={() => {
-                        setIsOpen(false);
-                      }}
-                      className="navbar-item"
-                    >
-                      <span className="icon-text">
-                        <span className="icon">
-                          <i className="fa fa-pen-to-square"></i>
+                    {user && (
+                      <Link
+                        to="/sessions"
+                        onClick={() => {
+                          setIsOpen(false);
+                        }}
+                        className="navbar-item"
+                      >
+                        <span className="icon-text">
+                          <span className="icon">
+                            <i className="fa fa-pen-to-square"></i>
+                          </span>
+                          <span>Sessions</span>
                         </span>
-                        <span>Sessions</span>
-                      </span>
-                    </Link>
-                    <Link
-                      to="/posts"
-                      onClick={() => {
-                        setIsOpen(false);
-                      }}
-                      className="navbar-item"
-                    >
-                      <span className="icon-text">
-                        <span className="icon">
-                          <i className="fa fa-people-group"></i>
+                      </Link>
+                    )}
+                    {user && (
+                      <Link
+                        to="/posts"
+                        onClick={() => {
+                          setIsOpen(false);
+                        }}
+                        className="navbar-item"
+                      >
+                        <span className="icon-text">
+                          <span className="icon">
+                            <i className="fa fa-people-group"></i>
+                          </span>
+                          <span>Community</span>
                         </span>
-                        <span>Community</span>
-                      </span>
-                    </Link>
+                      </Link>
+                    )}
                     <Link
                       to="/movements"
                       onClick={() => {

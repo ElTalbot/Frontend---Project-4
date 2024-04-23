@@ -52,9 +52,11 @@ function Session({
               Book
             </button>
           )}
-          <button className="button cancel" onClick={() => onCancel(id)}>
-            Cancel
-          </button>
+          {!userBooked && (
+            <button className="button cancel" onClick={() => onCancel(id)}>
+              Cancel
+            </button>
+          )}
         </div>
       </div>
 

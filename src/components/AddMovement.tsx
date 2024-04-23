@@ -2,8 +2,12 @@ import React, { SyntheticEvent, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { baseUrl } from "../config";
+import { IUser } from "../interfaces/user";
 
-export default function AddMovementModal({ onClose }: any) {
+export default function AddMovementModal(
+  { onClose }: any,
+  { user }: { user: null | IUser }
+) {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -40,6 +44,7 @@ export default function AddMovementModal({ onClose }: any) {
     navigate("/movements");
 
     console.log("token", resp);
+    console.log("user", user);
   }
   return (
     <div className="modal is-active">

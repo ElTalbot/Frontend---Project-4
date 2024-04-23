@@ -7,26 +7,36 @@ import AddSessionModal from "./AddSession";
 import axios from "axios";
 import { baseUrl } from "../config";
 
-// type Sessions = null | Array<ISession>;
-type SessionWithBooking = ISession & { user_booked: boolean };
+type Sessions = null | Array<ISession>;
 
 function AllSessions({ user }: { user: null | IUser }) {
-  // const [sessions, setSessions] = React.useState<Sessions>(null);
-  const [sessions, setSessions] = React.useState<SessionWithBooking[]>([]);
+  const [sessions, setSessions] = React.useState<Sessions>(null);
   const [showModal, setShowModal] = React.useState(false);
   const [book, setBook] = React.useState(null);
-  const { sessionId } = useParams();
+  const [bookingsList, setBookingsList] = React.useState<any[]>([]);
   const [cancel, setCancel] = React.useState(null);
+  const [showBookModal, setShowBookModal] = React.useState(false);
+  const { sessionId } = useParams();
+
+  // React.useEffect(() => {
+  //   async function fetchsessions() {
+  //     const resp = await fetch(`${baseUrl}/sessions`);
+  //     const data = await resp.json();
+  //     setSessions(data);
+  //     console.log("dat", data);
+  //     setShowModal(false);
+  //     console.log("user", user);
+  //   }
+  //   fetchsessions();
+  // }, []);
 
   React.useEffect(() => {
     async function fetchsessions() {
       const resp = await fetch(`${baseUrl}/sessions`);
       const data = await resp.json();
-      const sessionsWithBooking: SessionWithBooking[] = resp.json.user_booked;
-      setSessions(sessionsWithBooking);
       setSessions(data);
       setShowModal(false);
-      console.log("this is the data: ", data);
+      // console.log("this is the data: ", data);
     }
     fetchsessions();
   }, []);
@@ -37,12 +47,12 @@ function AllSessions({ user }: { user: null | IUser }) {
 
   // -------------------BOOKING A SESSION------------------
 
-  // async function bookSession(sessionId: any) {
-  //   const handleBooking = await fetch(`${baseUrl}/sessions/${sessionId}`);
-  //   const data = await handleBooking.json();
-  //   setBook(data);
-  // }
-  // bookSession(sessionId);
+  async function bookSession(sessionId: any) {
+    const handleBooking = await fetch(`${baseUrl}/sessions`);
+    const data = await handleBooking.json();
+    setBook(data);
+  }
+  bookSession(sessionId);
 
   async function booking(sessionId: any) {
     const token = localStorage.getItem("token");
@@ -53,7 +63,7 @@ function AllSessions({ user }: { user: null | IUser }) {
         headers: { Authorization: `Bearer ${token}` },
       }
     );
-    // console.log("This is resp is it?", resp);
+    console.log("Thank you for your booking, see you are the class!!");
   }
 
   // -----------------CANCELLING A SESSION----------------
@@ -70,12 +80,12 @@ function AllSessions({ user }: { user: null | IUser }) {
 
   async function cancelling(sessionId: any) {
     const token = localStorage.getItem("token");
-    console.log("Is this the token I want", token);
+    // console.log("Is this the token I want", token);
     const resp = await axios.delete(`${baseUrl}/sessions/cancel`, {
       data: { session_id: sessionId },
       headers: { Authorization: `Bearer ${token}` },
     });
-    console.log("This is resp is it?", resp);
+    console.log("Sorry to see you have cancelled");
   }
 
   return (
