@@ -15,7 +15,9 @@ function AllPosts({ user }: { user: null | IUser }) {
   const [deleteModal, setDeleteModal] = React.useState(false);
   const { postId } = useParams();
   const navigate = useNavigate();
-  const [postIdToDelete, setPostIdToDelete] = React.useState(null);
+  const [postIdToDelete, setPostIdToDelete] = React.useState<null | string>(
+    null
+  );
 
   // -------------------DELETE POST----------------------------
   async function deletePost(postId: string) {
@@ -104,7 +106,6 @@ function AllPosts({ user }: { user: null | IUser }) {
                     setPostIdToDelete(post.id);
                     console.log("post??", post.id);
                     setDeleteModal(true);
-                    deletePost(post.id);
                   }}
                 >
                   <span className="icon ml-1">
@@ -171,7 +172,10 @@ function AllPosts({ user }: { user: null | IUser }) {
                 Are you sure you want to delete this comment? ?
               </h1>
               <div className="is-flex is-justify-content-space-between px-6 mb-2">
-                <button onClick={deletePost} className="button is-danger">
+                <button
+                  onClick={() => deletePost(postIdToDelete!)} // Pass postIdToDelete to deletePost
+                  className="button is-danger"
+                >
                   Delete
                 </button>
                 <button

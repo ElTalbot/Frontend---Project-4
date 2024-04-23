@@ -99,18 +99,18 @@ function ShowMovement({ user }: { user: null | IUser }) {
           )}
         </div>
       </div>
-      <div className="">
-        <figure className="image is-16by9">
-          <iframe
-            className="has-ratio"
-            width="1600"
-            height="900"
-            src={movement && movement.video}
-            frameBorder="0"
-            allowFullScreen
-          ></iframe>
-        </figure>
-      </div>
+      {movement && movement.video && (
+        <div className="">
+          <figure className="image is-16by9">
+            <iframe
+              className="has-ratio"
+              width="1600"
+              height="900"
+              src={movement.video}
+            ></iframe>
+          </figure>
+        </div>
+      )}
       <div className="mt-5">
         <div className="description is-size-3 mb-2">
           How do you do {movement && movement.name}?

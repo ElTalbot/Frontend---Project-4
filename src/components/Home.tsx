@@ -70,7 +70,7 @@ function Home({ user }: { user: null | IUser }) {
           </div>
           <div className="column is-one-third">
             <figure className="image is-128x128">
-              <img src={session} alt="Owlcore Logo" />
+              <img src={image} alt="Owlcore Logo" />
             </figure>
           </div>
         </div>
@@ -232,7 +232,7 @@ function Home({ user }: { user: null | IUser }) {
               width="64"
               height="16"
               className="navbar-item"
-              src={session}
+              src={image}
               alt="Owlcore Icon"
             />
           </Link>

@@ -34,7 +34,7 @@ export default function Login({ fetchUser }: { fetchUser: Function }) {
   }
 
   return (
-    <div className="section is-flex is-small is-justify-content-center">
+    <div className="section hero is-fullheight is-flex is-small is-justify-content-center">
       <div className="container add is-max-desktop custom-border-radius p-6 login">
         <h1 className="is-size-4 mb-2 has-text-centered">
           Welcome back to our Owlcore Fitness Community!
