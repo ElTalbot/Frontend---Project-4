@@ -6,38 +6,39 @@ import { IUser } from "../interfaces/user";
 interface SessionProps extends ISession {
   onBook: (id: any) => void;
   onCancel: (id: any) => void;
-  userBooked: boolean;
+  user_booked: boolean;
+  sessionNumbers: number;
+  user: string;
+  session_id: string;
+  session_date: string;
+  session_day: string;
+  session_capacity: number;
+  session_name: string;
 }
 
 function Session({
-  id,
-  date,
-  day,
-  capacity,
+  session_id,
+  session_date,
+  session_day,
+  session_capacity,
   user,
-  name,
+  session_name,
   onBook,
   onCancel,
-  userBooked,
+  user_booked,
+  sessionNumbers,
 }: SessionProps) {
-  const [showBookModal, setShowBookModal] = React.useState(false);
-
-  const handleBookClick = () => {
-    onBook(id);
-    setShowBookModal(true);
-  };
-
-  const handleCloseBook = () => {
-    setShowBookModal(false);
-  };
-
   return (
     <div className="card m-4">
-      <div className="card-content sessions is-flex is-flex-direction-column p-4">
-        <p className="is-align-self-flex-end is-size-7 is-uppercase">{name}</p>
-        <p className="mt-2">
-          {day} {date}
-        </p>
+      <div>
+        {user && (
+          <div>
+            <p>{session_name}</p>
+            <p>
+              {session_day} {session_date}
+            </p>
+          </div>
+        )}
 
         {user && (
           <span className="icon-text">
@@ -46,38 +47,32 @@ function Session({
             </span>
           </span>
         )}
+
         <div className="is-flex is-flex-direction-row mt-2">
-          {!userBooked && (
-            <button className="button book" onClick={handleBookClick}>
-              Book
-            </button>
-          )}
-          {!userBooked && (
-            <button className="button cancel" onClick={() => onCancel(id)}>
-              Cancel
-            </button>
+          {sessionNumbers >= session_capacity ? (
+            <p>Fully Booked</p>
+          ) : (
+            <>
+              {!user_booked && (
+                <button
+                  className="button book"
+                  onClick={() => onBook(session_id)}
+                >
+                  Book
+                </button>
+              )}
+              {user_booked && (
+                <button
+                  className="button cancel"
+                  onClick={() => onCancel(session_id)}
+                >
+                  Cancel
+                </button>
+              )}
+            </>
           )}
         </div>
       </div>
-
-      {showBookModal && (
-        <div className="modal is-active">
-          <div className="modal-background">
-            <div className="modal-content card p-6">
-              <h1 className="is-size-4 has-text-centered">
-                Thank you for booking on this session - we look forward to
-                seeing you there
-                <span className="column icon-text is-align-items-center p-0">
-                  <span className="icon m-2">
-                    <i className="fa-solid fa-face-smile"></i>
-                  </span>
-                </span>
-              </h1>
-            </div>
-            <button onClick={handleCloseBook}>close</button>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

@@ -1,58 +1,53 @@
-import React, { SyntheticEvent } from "react";
+import React from "react";
 import Session from "./SessionCard";
 import { ISession } from "../interfaces/session";
 import { Link, useParams } from "react-router-dom";
 import { IUser } from "../interfaces/user";
-import AddSessionModal from "./AddSession";
-import axios from "axios";
 import { baseUrl } from "../config";
+import axios from "axios";
 
 type Sessions = null | Array<ISession>;
 
 function AllSessions({ user }: { user: null | IUser }) {
   const [sessions, setSessions] = React.useState<Sessions>(null);
-  const [showModal, setShowModal] = React.useState(false);
   const [book, setBook] = React.useState(null);
-  const [bookingsList, setBookingsList] = React.useState<any[]>([]);
-  const [cancel, setCancel] = React.useState(null);
-  const [showBookModal, setShowBookModal] = React.useState(false);
   const { sessionId } = useParams();
 
-  // React.useEffect(() => {
-  //   async function fetchsessions() {
-  //     const resp = await fetch(`${baseUrl}/sessions`);
-  //     const data = await resp.json();
-  //     setSessions(data);
-  //     console.log("dat", data);
-  //     setShowModal(false);
-  //     console.log("user", user);
-  //   }
-  //   fetchsessions();
-  // }, []);
+  // fetch the number of bookings for a specific session
+  async function fetchSessionBookings(sessionId: any) {
+    const { data } = await axios.get(`${baseUrl}/usersessions/${sessionId}`);
+    const userCount = parseInt(data.user_count);
+    return userCount;
+  }
 
+  // get all sessions on page load
   React.useEffect(() => {
-    async function fetchsessions() {
-      const resp = await fetch(`${baseUrl}/sessions`);
+    async function fetchSessions() {
+      const token = localStorage.getItem("token");
+      const resp = await fetch(`${baseUrl}/sessions`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
       const data = await resp.json();
-      setSessions(data);
-      setShowModal(false);
-      // console.log("this is the data: ", data);
+
+      setSessions(data.sessions_with_status);
+      console.log(data.sessions_with_status);
     }
-    fetchsessions();
+
+    fetchSessions();
+
+    async function bookSession(sessionId: any) {
+      const handleBooking = await fetch(`${baseUrl}/sessions`);
+      const data = await handleBooking.json();
+      setBook(data);
+      console.log(data);
+    }
+
+    bookSession(sessionId);
   }, []);
 
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
-
-  // -------------------BOOKING A SESSION------------------
-
-  async function bookSession(sessionId: any) {
-    const handleBooking = await fetch(`${baseUrl}/sessions`);
-    const data = await handleBooking.json();
-    setBook(data);
-  }
-  bookSession(sessionId);
+  // booking a session
+  // !! use token to make sure got user and add user to the session
 
   async function booking(sessionId: any) {
     const token = localStorage.getItem("token");
@@ -63,24 +58,12 @@ function AllSessions({ user }: { user: null | IUser }) {
         headers: { Authorization: `Bearer ${token}` },
       }
     );
-    console.log("Thank you for your booking, see you are the class!!");
+    console.log("sessionId", sessionId);
   }
 
-  // -----------------CANCELLING A SESSION----------------
-
-  // async function cancelSession(sessionId: any) {
-  //   const handleCancelling = await fetch(
-  //     `${baseUrl}/sessions/${sessionId}`
-  //   );
-  //   const cancelData = await handleCancelling.json();
-  //   setCancel(cancelData);
-  // }
-
-  // cancelSession(sessionId);
-
+  // cancelling a session
   async function cancelling(sessionId: any) {
     const token = localStorage.getItem("token");
-    // console.log("Is this the token I want", token);
     const resp = await axios.delete(`${baseUrl}/sessions/cancel`, {
       data: { session_id: sessionId },
       headers: { Authorization: `Bearer ${token}` },
@@ -88,134 +71,30 @@ function AllSessions({ user }: { user: null | IUser }) {
     console.log("Sorry to see you have cancelled");
   }
 
+  // return the sessions cards
+
   return (
-    <section className="section is-flex is-flex-direction-column is-justify-self-center mx-6 mt-6">
-      <div className="is-flex is-flex-direction-row columns is-multiline column">
-        <div className="column is-half pb-0">
-          <h1 className="subtitle is-size-2 mb-2">Upcoming Classes</h1>
-          <h2 className="subtitle">
-            {user && user.username
-              ? `Hello ${user?.username}, let’s get booking - explore our upcoming
-              classes`
-              : "Welcome, explore our upcoming sessions"}
-          </h2>
-        </div>
-        <div className="container p-0 m-0 column is-align-self-flex-end">
-          <span className="is-flex is-justify-content-flex-end mt-3">
-            {user && (
-              <>
-                <button
-                  className="button book mr-4 mb-o"
-                  onClick={() => {
-                    setShowModal(true);
-
-                    console.log("hello is this working?");
-                  }}
-                >
-                  Add Session
-                  <span className="icon ml-1">
-                    <i className="fa fa-plus"></i>
-                  </span>
-                </button>
-                {showModal && <AddSessionModal onClose={handleCloseModal} />}
-              </>
-            )}
-          </span>
-        </div>
-      </div>
-
-      <div className="columns is-multiline">
-        {sessions?.map((session: any) => {
-          return (
-            <Session
-              key={session.id}
-              onBook={() => booking(session.id)}
-              onCancel={() => cancelling(session.id)}
-              {...session}
-              userBooked={session.userBooked}
-            />
-          );
-        })}
-      </div>
-      <section className="is-small mx-4 mt-6 is-flex is-flex-direction-row is-justify-content-space-between">
-        <div className="is-align-self-flex-start is-flex">
-          <Link to="/">
-            <img
-              width="64"
-              height="16"
-              className="navbar-item"
-              src="../src/assets/Icon.png"
-              alt="Owlcore Icon"
-            />
-          </Link>
-        </div>
-        <div className="is-align-content-center">
-          <div className="columns is-multiline m-1">
-            <div className="mr-2 has-text-centered">
-              <Link to="/login">
-                <div>Login</div>
-              </Link>
-            </div>
-            <div className="ml-2 has-text-centered">
-              <Link to="/signup">
-                <div>Signup</div>
-              </Link>
-            </div>
-          </div>
-
-          <div className="has-text-centered">
-            <Link to="/about">
-              <div>About</div>
-            </Link>
-          </div>
-        </div>
+    <>
+      <section>
         <div>
-          <div className="columns is-multiline is-align-self-center m-2">
-            <a
-              href="https://www.instagram.com/owlcore3912/?igshid=MmIzYWVlNDQ5Yg%3D%3D"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span className="column icon-text is-align-items-center mr-1 p-0">
-                <span className="icon homepage is-medium">
-                  <i className="fa-brands fa-instagram fa-xl"></i>
-                </span>
-              </span>
-            </a>
-            <a
-              href="https://www.facebook.com/profile.php?id=100093828954295"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span className="column icon-text is-align-items-center mx-1 p-0">
-                <span className="icon homepage is-medium">
-                  <i className="fa-brands fa-facebook fa-xl"></i>
-                </span>
-              </span>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/elizabeth-l-talbot/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span className="column icon-text is-align-items-center ml-1 p-0">
-                <span className="icon homepage is-medium">
-                  <i className="fa-brands fa-linkedin fa-xl"></i>
-                </span>
-              </span>
-            </a>
-          </div>
-          <div className="is-align-self-center">
-            <span className="column icon-text is-align-items-center p-0">
-              <span className="icon m-0">
-                <i className="fa-solid fa-copyright fa-sm"></i>
-              </span>
-              <span>2023 Owlcore</span>
-            </span>
-          </div>
+          {sessions?.map((session: any) => {
+            console.log(session.name);
+            // const sessionNumbers = fetchSessionBookings(session.id);
+
+            return (
+              <Session
+                key={session.id}
+                onBook={() => booking(session.session_id)}
+                onCancel={() => cancelling(session.session_id)}
+                user={user}
+                // sessionNumbers={sessionNumbers}
+                {...session}
+              />
+            );
+          })}
         </div>
       </section>
-    </section>
+    </>
   );
 }
 export default AllSessions;
