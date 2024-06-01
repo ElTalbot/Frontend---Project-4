@@ -1,0 +1,16 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+.signup {
+  @include container;
+  @include flex(column);
+
+  &__wrapper {
+    @include flex(column);
+  }
+
+  &__text {
+    font-size: 14px;
+    font-weight: 600;
+  }
+}

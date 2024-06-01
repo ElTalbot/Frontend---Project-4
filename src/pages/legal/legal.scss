@@ -1,0 +1,21 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+.legal {
+  @include container;
+  gap: 1rem;
+  background-color: $bg-primary;
+  @include tablet-and-desktop {
+    @include flex(column, space-between, center);
+  }
+
+  &__bold {
+    font-weight: 600;
+    font-size: 24px;
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+  &__section {
+    padding: 10px 0;
+  }
+}

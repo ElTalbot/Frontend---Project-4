@@ -1,0 +1,43 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+.consent-form {
+  @include flex(column, start, start);
+  gap: 1rem;
+
+  &__wrapper-checkbox {
+    @include flex(row-reverse, start, start);
+  }
+
+  &__input-checkbox {
+    margin-top: 0.4rem;
+    margin-right: 0.5rem;
+  }
+
+  &__grid {
+    display: grid;
+    width: 100%;
+    gap: 1rem;
+
+    @include tablet-and-desktop {
+      grid: auto-flow / 2fr 2fr;
+    }
+  }
+
+  &__wrapper {
+    @include flex(column, start, start);
+  }
+
+  &__input {
+    width: 100%;
+    @include form-field;
+  }
+
+  &__btn {
+    @include button-primary;
+    @include flex(row, space-evenly);
+    margin-top: 10px;
+    margin-right: 16px;
+    margin-bottom: 40px;
+  }
+}

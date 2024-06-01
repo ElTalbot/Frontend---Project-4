@@ -1,0 +1,16 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+.sessions {
+  @include container;
+  gap: 1rem;
+  background-color: $bg-primary;
+
+  &__cards {
+    @include flex(row, start);
+    flex-wrap: wrap;
+  }
+  &__title {
+    padding-left: 18px;
+  }
+}

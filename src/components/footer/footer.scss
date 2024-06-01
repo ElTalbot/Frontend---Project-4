@@ -1,0 +1,52 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+.footer {
+  @include flex(row, space-between, flex-end);
+  background-color: $bg-primary;
+  margin: 20px;
+  padding-bottom: 0;
+
+  &__link {
+    @include flex(column);
+  }
+
+  &__logsign {
+    @include flex(row, space-between);
+    min-width: 96px;
+  }
+
+  &__copy {
+    @include flex(row, space-between, center);
+    gap: 1rem;
+  }
+
+  &__copyright {
+    @include flex(row);
+  }
+  &__legal {
+    font-size: 14px;
+    font-weight: 700;
+  }
+  &__copytext {
+    font-size: 14px;
+    font-weight: 700;
+    margin-left: 4px;
+  }
+
+  &__social {
+    @include flex(row, space-between);
+    min-width: 86px;
+  }
+
+  &__logout {
+    @include flex(row, center);
+    gap: 1rem;
+    min-width: 96px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .footer {
+    @include flex(column);
+  }
+}

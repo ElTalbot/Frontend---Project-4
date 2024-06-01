@@ -1,0 +1,40 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+.posts {
+  @include container;
+  gap: 1rem;
+  background-color: $bg-primary;
+
+  &__title {
+    padding: 0 18px;
+  }
+  &__btn {
+    @include button-primary;
+    @include flex(row, space-evenly);
+    margin-top: 10px;
+    margin-right: 16px;
+  }
+  &__spread {
+    @include flex(row, start);
+  }
+  &__icon {
+    color: $accent-primary;
+  }
+
+  &__input {
+    min-height: 80px;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    padding: 20px;
+    margin: 10px 0;
+  }
+
+  &__submittedposts {
+    margin-top: 40px;
+    padding-left: 18px;
+    @include flex(row, start, start);
+    flex-wrap: wrap;
+  }
+}

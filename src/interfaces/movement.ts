@@ -5,8 +5,6 @@ export interface IMovement {
   descriptionTwo: string;
   descriptionThree: string;
   descriptionFour: string;
-  descriptionFive: string;
-  descriptionSix: string;
   image: string;
   type: string;
   equipment: string;

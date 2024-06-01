@@ -1,0 +1,24 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+.header {
+  padding: 0 10px;
+
+  &__container {
+    @include container;
+    margin: 0;
+    max-width: none;
+    @include flex(row);
+  }
+
+  &__wrapper {
+    &--nav {
+      margin-left: auto;
+    }
+  }
+}
+@media only screen and (max-width: 600px) {
+  .header {
+    max-width: $max-width;
+  }
+}

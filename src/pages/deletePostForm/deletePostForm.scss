@@ -1,0 +1,49 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+.show-form {
+  @include flex(column, start, stretch);
+  width: 100%;
+  gap: 1rem;
+
+  &__container {
+    width: 100%;
+  }
+
+  &__all {
+    @include flex(row, space-between, center);
+    width: 100%;
+  }
+  &__input {
+    @include form-field;
+    padding-right: 1rem;
+    @include flex(column, start, start);
+    gap: 1rem;
+    max-width: 500px;
+  }
+
+  &__deletebtn {
+    @include flex(row, space-evenly);
+    background-color: $bg-primary;
+    color: $text-primary;
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 500;
+    height: 2rem;
+    width: fit-content;
+    padding: 10px;
+    border-radius: 0.5rem;
+    border: solid 2px $fail;
+    margin-top: 10px;
+
+    @include tablet-and-desktop {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      width: fit-content;
+      min-width: 7rem;
+    }
+  }
+  &__buttons {
+    @include flex(row, space-between, start);
+    width: 100%;
+  }
+}

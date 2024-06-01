@@ -1,0 +1,48 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+.post {
+  max-width: $max-width;
+  min-width: 480px;
+  padding: 1rem;
+  gap: 0.6em;
+  @include tablet-and-desktop {
+    padding: 2 2rem;
+  }
+  @include flex(column, space-between, space-between);
+  max-width: 300px;
+  border-radius: 6px;
+  background-color: $bg-secondary;
+  margin: 10px 10px;
+
+  &__content {
+    @include flex(row, start, start);
+  }
+
+  &__details {
+    @include flex(row, space-between, space-between);
+    width: 100%;
+  }
+  &__username {
+    font-size: 16px;
+    width: fit-content;
+    font-weight: 700;
+  }
+  &__date {
+    font-size: 16px;
+    width: fit-content;
+    font-weight: 700;
+  }
+
+  &__trash {
+    color: $accent-primary;
+    border: none;
+    background-color: $bg-secondary;
+    padding-left: 10px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .post {
+    min-width: 100px;
+  }
+}

@@ -16,6 +16,14 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "d.ts"],
+  "include": [
+    "src",
+    "d.ts",
+    "loginPage.tsx",
+    "loginForm",
+    "signupForm.tsx",
+    "signupPage",
+    "Navbar.tsx"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

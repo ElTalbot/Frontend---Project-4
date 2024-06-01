@@ -1,0 +1,9 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.divider {
+  width: 100%;
+  border: 2px solid $accent-primary;
+  border-radius: 1rem;
+  margin: 10px 0;
+}

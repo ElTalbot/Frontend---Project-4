@@ -1,0 +1,141 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  line-height: calc(1em + 0.5rem);
+}
+
+img,
+picture,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 16px;
+}
+
+a {
+  font-family: "Rajdhani", sans-serif;
+  text-decoration: none;
+  color: inherit;
+}
+p {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 18px;
+}
+label {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+h1 {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 4px 0;
+}
+h2 {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 36px;
+  padding: 10px 0;
+  font-weight: 600;
+  line-height: 1;
+}
+h3 {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 30px;
+  padding: 4px 0;
+  line-height: 1;
+}
+h4 {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 24px;
+  padding: 4px 0;
+  line-height: 1;
+}
+h5 {
+  font-family: "Rajdhani", sans-serif;
+  font-size: 20px;
+  padding: 10px 0;
+}
+
+@media screen and (max-width: 350px) {
+  h1 {
+    font-family: "Rajdhani", sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1;
+    padding: 4px 0;
+  }
+  h2 {
+    font-family: "Rajdhani", sans-serif;
+    font-size: 30px;
+    padding: 10px 0;
+    font-weight: 600;
+    line-height: 1;
+  }
+  h3 {
+    font-family: "Rajdhani", sans-serif;
+    font-size: 24px;
+    padding: 4px 0;
+    line-height: 1;
+  }
+  h4 {
+    font-family: "Rajdhani", sans-serif;
+    font-size: 20px;
+    padding: 4px 0;
+    line-height: 1;
+  }
+  h5 {
+    font-family: "Rajdhani", sans-serif;
+    font-size: 18px;
+    padding: 10px 0;
+  }
+}
+@media screen and (max-width: 600px) {
+  h1 {
+    font-family: "Rajdhani", sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1;
+    padding: 4px 0;
+  }
+  h2 {
+    font-family: "Rajdhani", sans-serif;
+    font-size: 24px;
+    padding: 10px 0;
+    font-weight: 600;
+    line-height: 1;
+  }
+  h3 {
+    font-family: "Rajdhani", sans-serif;
+    font-size: 18px;
+    padding: 4px 0;
+    line-height: 1;
+  }
+  h4 {
+    font-family: "Rajdhani", sans-serif;
+    font-size: 16px;
+    padding: 4px 0;
+    line-height: 1;
+  }
+  h5 {
+    font-family: "Rajdhani", sans-serif;
+    font-size: 14px;
+    padding: 10px 0;
+  }
+}

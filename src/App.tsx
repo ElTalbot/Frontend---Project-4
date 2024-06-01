@@ -1,17 +1,22 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React from "react";
-import Navbar from "./components/Navbar";
-import Home from "./components/Home";
+import Home from "./pages/home/Home";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import AllMovements from "./components/Movements";
-import ShowMovement from "./components/ShowMovement";
-import AllSessions from "./components/Sessions";
-import Signup from "./components/Signup";
-import Login from "./components/Login";
-import AllPosts from "./components/Posts";
-import About from "./components/About";
-import AddMovementModal from "./components/AddMovement";
+import AllMovements from "./pages/allMovements/Movements";
+import ShowMovement from "./pages/showMovement/ShowMovement";
+import AllSessions from "./pages/allSessions/Sessions";
+import SignupPage from "./pages/signupPage/signupPage";
+import Header from "./components/header/header";
+import Footer from "./components/footer/footer";
+import "./app.scss";
+import LoginPage from "./pages/loginPage/loginPage";
+
+import AllPosts from "./pages/community/community";
+import About from "./pages/about/About";
+import Privacy from "./pages/legal/privacy";
+import Terms from "./pages/legal/terms";
+import AddMovementModal from "./pages/AddMovementForm/AddMovementForm";
 import { baseUrl } from "./config";
 
 function App() {
@@ -21,23 +26,23 @@ function App() {
     const resp = await axios.get(`${baseUrl}/user`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    console.log("This is the resp.data", token);
     setUser(resp.data);
   }
   //if there is a token (so if user logged in) it will fetch the user
   React.useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) fetchUser();
-    console.log("This is the user", user);
   }, []);
   return (
     <Router>
-      <Navbar user={user} setUser={setUser} />
+      <Header user={user} setUser={setUser} />
       <Routes>
         <Route path="/" element={<Home user={user} />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
         <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login fetchUser={fetchUser} />} />
+        <Route path="/login" element={<LoginPage fetchUser={fetchUser} />} />
         <Route path="/movements" element={<AllMovements user={user} />} />
         <Route
           path="/addmovement"
@@ -51,6 +56,7 @@ function App() {
         />
         <Route path="/posts/:postId" element={<AllPosts user={user} />} />
       </Routes>
+      <Footer user={user} setUser={setUser} />
     </Router>
   );
 }

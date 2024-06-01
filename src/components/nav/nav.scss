@@ -1,0 +1,44 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+.nav {
+  display: none;
+
+  @include tablet-and-desktop {
+    @include flex;
+    gap: 1rem;
+  }
+}
+
+.mob-nav {
+  @include tablet-and-desktop {
+    display: none;
+  }
+  &__icon {
+    cursor: pointer;
+    position: relative;
+  }
+
+  &__container {
+    @include container;
+    @include flex(column, center, start);
+    gap: 0.5rem;
+    position: absolute;
+    top: 100;
+    right: 0;
+    background-color: $bg-primary;
+    border-radius: 1rem 0 1rem 1rem;
+    width: fit-content;
+    margin-right: 40px;
+  }
+
+  &__close {
+    cursor: pointer;
+    align-self: end;
+  }
+}
+.nav__text {
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+}

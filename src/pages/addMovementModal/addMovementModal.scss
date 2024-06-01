@@ -1,0 +1,30 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+.add {
+  @include container;
+  @include flex;
+  background-color: $bg-transparent;
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+
+  &__container {
+    @include container;
+    background-color: $bg-primary;
+    max-height: calc(100vh - 4rem);
+    border-radius: 1rem;
+
+    @include tablet-and-desktop {
+      width: 60%;
+    }
+  }
+
+  &__content {
+    max-height: calc(100vh - 8rem);
+    overflow-y: scroll;
+    padding-right: 1rem;
+    @include flex(column, start, start);
+    gap: 1rem;
+  }
+}

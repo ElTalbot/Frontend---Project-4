@@ -1,0 +1,67 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+.about {
+  @include container;
+  gap: 1rem;
+  background-color: $bg-primary;
+  @include tablet-and-desktop {
+    @include flex(column, space-between, center);
+  }
+  &__story {
+    padding-top: 40px;
+  }
+
+  &__highlight {
+    color: $accent-primary;
+    font-weight: 800;
+    font-size: 26px;
+    text-transform: uppercase;
+  }
+  &__bold {
+    font-weight: 600;
+    font-size: 24px;
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+  &__section {
+    padding: 40px 0;
+  }
+  &__quals {
+    @include flex(row, start, start);
+  }
+  &__qual {
+    line-height: 2;
+    margin-top: 40px;
+    margin-right: 80px;
+    align-self: flex-start;
+  }
+  &__caveat {
+    text-transform: uppercase;
+    font-weight: 700;
+    border-left: solid 4px $accent-primary;
+    padding: 6px 20px;
+    margin: 20px 0;
+  }
+  &__icon {
+    @include flex(row, start);
+    margin-top: 10px;
+  }
+  &__fast {
+    margin-left: 10px;
+  }
+  @media screen and (max-width: 900px) {
+    &__text {
+      font-size: 1.2rem;
+    }
+    &__quals {
+      @include flex(column);
+    }
+    &__qual {
+      margin: 0;
+    }
+    &__story {
+      padding: 20px;
+    }
+  }
+}

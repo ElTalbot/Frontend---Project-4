@@ -1,0 +1,79 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+.session {
+  padding: 1rem;
+  width: 100%;
+  max-width: $max-width;
+  margin: 0 auto;
+  gap: 0.6em;
+
+  @include tablet-and-desktop {
+    padding: 2 2rem;
+  }
+  @include flex(column, start, start);
+  margin: 10px 10px;
+  background-color: $bg-secondary;
+  max-width: 300px;
+  border-radius: 6px;
+
+  &__namedaydate {
+    @include flex(row, space-between);
+    width: 100%;
+  }
+
+  &__name {
+    @include flex(row, center, end);
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 0.4;
+  }
+
+  &__date {
+    font-weight: 700;
+    font-size: 20px;
+  }
+  &__day {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  &__full {
+    text-transform: uppercase;
+    font-size: 14px;
+    color: $fail;
+    font-weight: 600;
+    line-height: 0%;
+    align-self: end;
+  }
+  &__buttons {
+    @include flex(row, space-between, end);
+    width: 100%;
+  }
+  &__btn {
+    @include flex(row, space-evenly);
+    background-color: $bg-secondary;
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    line-height: 0.4;
+    align-items: flex-end;
+
+    :hover {
+      font-weight: 700;
+      transform: scale(1.02);
+    }
+  }
+
+  &__bookicon {
+    color: $accent-primary;
+    padding-bottom: 4px;
+  }
+  &__cancelicon {
+    color: $alt;
+    padding-bottom: 4px;
+  }
+}

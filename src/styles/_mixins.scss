@@ -1,0 +1,71 @@
+@use "./variables" as *;
+
+@mixin tablet-and-desktop {
+  @media screen and (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
+//BEM Block Element Modifier
+
+//to apply flex to an element. The default values are flex(row, center, center) so if you don't fill in the brackets thats the styling applied.
+//e.g. "@include flex;" styles an element with "display: flex, flex-direction: row, justify-content: center, align-items: center".
+@mixin flex($direction: row, $justify-content: center, $align-items: center) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin container {
+  padding: 1rem;
+  width: 100%;
+  max-width: $max-width;
+  margin: 0 auto;
+
+  @include tablet-and-desktop {
+    padding: 0 2rem;
+    padding-top: 3rem;
+  }
+}
+
+@mixin button-primary {
+  background-color: $accent-primary;
+  color: $text-secondary;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 500;
+  height: 2rem;
+  width: fit-content;
+  padding: 10px;
+  border-radius: 0.5rem;
+  border: none;
+
+  @include tablet-and-desktop {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    width: fit-content;
+    min-width: 7rem;
+  }
+}
+
+@mixin form-field {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  border: 2px solid $text-placeholder;
+  width: -webkit-fill-available;
+
+  &:active,
+  &:focus {
+    outline: 1px solid $accent-primary;
+  }
+
+  &::placeholder {
+    color: $text-placeholder;
+  }
+}
