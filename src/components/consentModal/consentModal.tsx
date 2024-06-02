@@ -7,7 +7,6 @@ export default function ConsentModal(
   { toggleConsentModal, toggleParqModal }: any,
   { user }: { user: null | IUser }
 ) {
-  console.log(user);
   return (
     <div className="consent">
       <section className="consent__container">
