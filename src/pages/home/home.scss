@@ -3,31 +3,23 @@
 
 .home {
   @include container;
-  gap: 1rem;
+  gap: 2rem;
   background-color: $bg-primary;
-  @include tablet-and-desktop {
-    @include flex(column, space-between, center);
-  }
+  min-height: 100vh;
 
+  // -----------HERO
   &__hero {
-    @include flex(column, center, center);
-    margin-bottom: 60px;
-  }
-  @media screen and (max-width: 600px) {
-    &__text {
-      font-size: 1.2rem;
-    }
-  }
-
-  &__text {
-    text-align: center;
-    line-height: 1.3;
-    padding: 10px;
+    @include flex(column);
+    margin-bottom: 40px;
   }
   &__header {
     text-align: center;
   }
-
+  &__text {
+    text-align: center;
+    line-height: 1.2;
+    padding: 10px;
+  }
   &__uppercase {
     text-transform: uppercase;
   }
@@ -37,9 +29,7 @@
     font-size: 26px;
     text-transform: uppercase;
   }
-  &__smallimage {
-    max-width: 80px;
-  }
+
   &__keywords {
     @include flex(column, center);
     width: max-content;
@@ -47,24 +37,18 @@
   }
 
   &__rowkeywords {
-    @include flex;
+    @include flex(column);
+    margin: 10px 0;
   }
-  @media screen and (max-width: 600px) {
-    &__rowkeywords {
-      @include flex(column);
-      margin: 10px 0;
-    }
-  }
-
   &__keyword {
     @include flex(column, start, center);
     max-width: 140px;
     min-height: 90px;
     margin: 0 40px;
+    padding: 10px 0;
   }
-  &__icon {
-    padding: 20px;
-    color: $alt;
+  &__smallimage {
+    max-width: 80px;
   }
   &__word {
     font-weight: 700;
@@ -72,67 +56,91 @@
   }
   &__btn {
     @include button-primary;
-    @include flex(row, center, center);
+    @include flex(row, space-evenly);
   }
 
+  // ---------FIRST/THIRDFEATURE
   &__feature {
-    @include flex(row, center, center);
-    margin: 40px 0;
+    @include flex(column, center, center);
+    gap: 2rem;
+  }
+  &__featuremove {
+    @include flex(column, center, center);
+    gap: 1rem;
+  }
+  &__featurewords {
+    @include flex(column, center, center);
+  }
+  &__featurekeywords {
+    width: fit-content;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: $accent-primary;
+  }
+  h2 {
+    text-align: center;
+  }
+  h5 {
+    text-align: center;
+    padding: 0;
+  }
+  &__imageright {
+    max-width: 200px;
     border-radius: 8px;
   }
-  @media screen and (max-width: 600px) {
-    &__feature {
-      @include flex(column);
-      margin: 10px 0;
-    }
-  }
+
+  // ---------SECONDFEATURE
   &__featureleft {
-    @include flex(row-reverse, center, center);
-    border-radius: 8px;
+    @include flex(column, center, center);
+    gap: 1rem;
+    margin: 80px 0;
   }
   &__imageleft {
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
-    max-width: 400px;
-    margin-right: 40px;
+    max-width: 200px;
   }
-  &__imageright {
-    border-radius: 8px;
-    max-width: 400px;
-    margin-left: 40px;
-  }
-  @media screen and (max-width: 600px) {
-    &__featureleft {
-      @include flex(column);
-      margin: 10px 0;
+
+  // ---------TABLETBREAKPOINT
+  @include tablet-and-desktop {
+    &__rowkeywords {
+      @include flex;
     }
   }
 
-  &__featuremove {
-    @include flex(column, start, space-between);
-    gap: 4em;
-    max-width: 600px;
-  }
+  // ----------DESKTOPBREAKPOINT
+  @include desktop {
+    @include flex(column, space-between, center);
 
-  &__featuremoveleft {
-    @include flex(column, end, end);
-    gap: 4em;
-    max-width: 600px;
-  }
-  &__featurekeywords {
-    text-transform: uppercase;
-    font-weight: 900;
-    font-size: 16px;
-    color: $accent-primary;
-  }
-  &__featurekeywordsleft {
-    text-transform: uppercase;
-    font-weight: 900;
-    font-size: 16px;
-    color: $accent-primary;
-    text-align: end;
-  }
-  &__featurewordsleft {
-    text-align: end;
+    &__feature {
+      @include flex(row, center, start);
+      max-width: 1000px;
+    }
+    &__featureleft {
+      @include flex(row-reverse, center, start);
+      border-radius: 8px;
+      margin: 60px 0;
+      max-width: 1000px;
+    }
+    &__featuremove {
+      align-items: flex-start;
+    }
+    &__featurewords {
+      align-items: flex-start;
+    }
+    h2 {
+      text-align: start;
+    }
+    h5 {
+      text-align: start;
+      padding: 0;
+    }
+    &__imageleft {
+      margin-right: 20px;
+      max-width: 300px;
+    }
+    &__imageright {
+      max-width: 300px;
+    }
   }
 }

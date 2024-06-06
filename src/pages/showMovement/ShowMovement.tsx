@@ -38,9 +38,9 @@ function ShowMovement({ user }: { user: null | IUser }) {
   }
   return (
     <section className="show">
-      <h1 className="show__title">{movement && movement.name}</h1>
-      <div className="show__textbuttons">
-        <div className="show__typeequip">
+      <div className="show__header">
+        <h1>{movement && movement.name}</h1>
+        <div className="show__textbuttons">
           <div className="show__top">
             <p className="show__toptitle">Type</p>
             <p className="show__toptext">{movement && movement.type}</p>
@@ -101,30 +101,28 @@ function ShowMovement({ user }: { user: null | IUser }) {
         </figure>
       )}
 
-      <h2>How do you do {movement && movement.name}?</h2>
+      <h2 className="show__how">How do you do {movement && movement.name}?</h2>
       <div className="show__description">
         <p className="show__numbers">1</p>
-        <p className="show__desctext">{movement && movement.descriptionOne}</p>
+        <p>{movement && movement.descriptionOne}</p>
       </div>
       <div className="show__description">
         <p className="show__numbers">2</p>
-        <p className="show__desctext">{movement && movement.descriptionTwo}</p>
+        <p>{movement && movement.descriptionTwo}</p>
       </div>
       <div className="show__description">
         <p className="show__numbers">3</p>
-        <p className="show__desctext">
-          {movement && movement.descriptionThree}
-        </p>
+        <p>{movement && movement.descriptionThree}</p>
       </div>
       <div className="show__description">
         <p className="show__numbers">4</p>
-        <p className="show__desctext">{movement && movement.descriptionFour}</p>
+        <p>{movement && movement.descriptionFour}</p>
       </div>
 
       <div className="show__adaption">
         <h2 className="show__adaptheader">Adaption</h2>
 
-        <p className="show__adapttext">{movement && movement.adaption}</p>
+        <p>{movement && movement.adaption}</p>
       </div>
     </section>
   );

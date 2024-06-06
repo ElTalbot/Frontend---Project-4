@@ -23,7 +23,7 @@ function Movement({
     <section className="movement">
       <Link to={`/movements/${id}`}>
         <div className="movement__top">
-          <h4>{name}</h4>
+          <h3>{name}</h3>
           <p className="movement__type">{type}</p>
         </div>
         <figure className="movement__image">

@@ -3,14 +3,25 @@
 
 .signup {
   @include container;
-  @include flex(column);
+  @include flex(column, flex-start);
+  background-color: $bg-primary;
+  min-height: 100vh;
 
   &__wrapper {
     @include flex(column);
+    margin-bottom: 10px;
   }
 
   &__text {
     font-size: 14px;
     font-weight: 600;
+  }
+  // ------------TABLETBREAKPOINT
+  @include tablet-and-desktop {
+    @include flex(column, flex-start, center);
+    max-height: fit-content;
+    &__wrapper {
+      min-width: 300px;
+    }
   }
 }

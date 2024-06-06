@@ -3,14 +3,26 @@
 
 .sessions {
   @include container;
-  gap: 1rem;
+  gap: 2rem;
   background-color: $bg-primary;
-
+  min-height: 100vh;
+  &__title {
+    @include flex(column, flex-start, flex-start);
+    margin: 0 20px;
+    margin-bottom: 20px;
+  }
   &__cards {
-    @include flex(row, start);
+    margin: 0 20px;
+    @include flex(row, flex-start, flex-start);
     flex-wrap: wrap;
   }
-  &__title {
-    padding-left: 18px;
+  // ----------TABLETBREAKPOINT
+  @include tablet-and-desktop {
+    &__cards {
+      margin-top: 0;
+    }
+    &__title {
+      align-items: stretch;
+    }
   }
 }

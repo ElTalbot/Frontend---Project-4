@@ -3,17 +3,14 @@
 
 .post {
   max-width: $max-width;
-  min-width: 480px;
   padding: 1rem;
   gap: 0.6em;
-  @include tablet-and-desktop {
-    padding: 2 2rem;
-  }
+
   @include flex(column, space-between, space-between);
   max-width: 300px;
   border-radius: 6px;
   background-color: $bg-secondary;
-  margin: 10px 10px;
+  margin: 10px 0;
 
   &__content {
     @include flex(row, start, start);
@@ -40,9 +37,9 @@
     background-color: $bg-secondary;
     padding-left: 10px;
   }
-}
-@media only screen and (max-width: 600px) {
-  .post {
-    min-width: 100px;
+  // ----------TABLETBREAKPOINT
+  @include tablet-and-desktop {
+    padding: 2 2rem;
+    margin-right: 20px;
   }
 }

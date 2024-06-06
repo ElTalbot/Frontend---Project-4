@@ -3,25 +3,27 @@
 
 .posts {
   @include container;
-  gap: 1rem;
+  gap: 2rem;
   background-color: $bg-primary;
+  min-height: 100vh;
 
   &__title {
-    padding: 0 18px;
+    @include flex(column);
+    margin: 0 20px;
+    margin-bottom: 20px;
+  }
+  &__submittedposts {
+    margin: 0 20px;
+    @include flex(row, flex-start, flex-start);
+    flex-wrap: wrap;
   }
   &__btn {
     @include button-primary;
     @include flex(row, space-evenly);
-    margin-top: 10px;
-    margin-right: 16px;
-  }
-  &__spread {
-    @include flex(row, start);
   }
   &__icon {
     color: $accent-primary;
   }
-
   &__input {
     min-height: 80px;
     width: 100%;
@@ -30,11 +32,23 @@
     padding: 20px;
     margin: 10px 0;
   }
-
-  &__submittedposts {
-    margin-top: 40px;
-    padding-left: 18px;
-    @include flex(row, start, start);
-    flex-wrap: wrap;
+  // ----------TABLETBREAKPOINT
+  @include tablet-and-desktop {
+    &__submittedposts {
+      margin-top: 0;
+    }
+    &__title {
+      align-items: stretch;
+    }
+    &__input {
+      margin: 20px 0;
+    }
+    h2 {
+      padding: 0;
+    }
+    &__spread {
+      @include flex(row, flex-start);
+      margin-top: 20px;
+    }
   }
 }

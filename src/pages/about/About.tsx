@@ -11,13 +11,15 @@ function About() {
 
   return (
     <section className="about">
-      <h1 className="about__header">
-        Your Local Neighbourhood Fitness Community
-      </h1>
-      <h3 className="about__text">
-        We are a friendly community built on the foundations of a drive to get
-        people moving, in a way they themselves feel comfortable.
-      </h3>
+      <div className="about__hero">
+        <h1 className="about__header">
+          Your Local Neighbourhood Fitness Community
+        </h1>
+        <h3>
+          We are a friendly community built on the foundations of a drive to get
+          people moving, in a way they themselves feel comfortable.
+        </h3>
+      </div>
 
       <div className="about__story">
         <p>
@@ -165,12 +167,7 @@ function About() {
             <span className="about__bold">Circuit</span> Training <br />
             <span className="about__bold">Core</span> Training
           </p>
-          <img
-            width="500"
-            height="500"
-            src={quals}
-            alt="Screenshots of all certificates mentioned"
-          />
+          <img src={quals} alt="Screenshots of all certificates mentioned" />
         </div>
       </div>
     </section>

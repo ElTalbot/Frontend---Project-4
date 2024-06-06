@@ -88,12 +88,14 @@ function AllPosts({ user }: { user: null | IUser }) {
     <section className="posts">
       <div className="posts__title">
         <h1>The Home of Positivity and Inspiration</h1>
-        <h4>
+        <h3>
           Join others in your Owlcore Online Community and come together and be
-          a force of empowerment to get moving, YOUR way!! Tell us your stories,
-          words, thoughts, feelings or just simply browse and feel the love from
-          fellow community members..
-        </h4>
+          a force of empowerment to get moving, YOUR way!!
+        </h3>
+        <p>
+          Tell us your stories, words, thoughts, feelings or just simply browse
+          and feel the love from fellow community members..
+        </p>
       </div>
       <div className="posts__submittedposts">
         {posts?.map((post: IPost) => (

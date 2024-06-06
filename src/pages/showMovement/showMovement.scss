@@ -3,51 +3,33 @@
 
 .show {
   @include container;
-  gap: 1rem;
+  gap: 2rem;
   background-color: $bg-primary;
-  width: 100vw;
+  height: 100vh;
 
-  &__title {
+  &__header {
     margin-bottom: 20px;
+    margin: 0 20px;
   }
-
   &__textbuttons {
-    @include flex(row, space-between);
+    @include flex(column, space-between);
+    margin-top: 10px;
   }
-
   &__top {
     @include flex(row, space-between, flex-end);
-    width: 300px;
+    width: 100%;
   }
-
   &__toptitle {
     text-transform: uppercase;
   }
-
   &__toptext {
     text-transform: uppercase;
     font-size: 16px;
     font-weight: 700;
   }
-  &__video {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin: 0 auto;
-    padding: 20px 0;
-  }
-
-  &__customvideo {
-    width: 100%;
-    max-width: 1600px;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    border: none;
-  }
   &__buttons {
     @include flex(row, end);
-    width: fit-content;
+    width: 100%;
   }
   &__updatebtn {
     @include button-primary;
@@ -67,15 +49,28 @@
     border-radius: 0.5rem;
     border: solid 2px $fail;
     margin-top: 10px;
-
-    @include tablet-and-desktop {
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
-      width: fit-content;
-      min-width: 7rem;
-    }
   }
-
+  &__video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px 20px;
+  }
+  &__customvideo {
+    width: 100%;
+    max-width: 1600px;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    border: none;
+  }
+  &__how {
+    margin: 0 20px;
+  }
+  &__description {
+    @include flex(row, start, end);
+    margin: 20px;
+  }
   &__numbers {
     font-size: 32px;
     font-weight: 600;
@@ -85,28 +80,10 @@
     border-bottom-left-radius: 8px;
     margin-right: 20px;
   }
-  &__desctext {
-    max-width: 600px;
-
-    padding-bottom: 2px;
-  }
-
-  &__description {
-    @include flex(row, start, end);
-    margin: 20px 0;
-  }
-
   &__adaption {
     box-shadow: 0 0 2px 2px rgba($color: $accent-primary, $alpha: 0.4);
-    padding: 30px 40px;
+    padding: 30px 20px;
     border-radius: 8px;
-    margin: 60px 0;
-  }
-
-  &__adaptheader {
-    padding-top: 0;
-  }
-  &__adapttext {
-    font-weight: 500;
+    margin: 60px 20px;
   }
 }

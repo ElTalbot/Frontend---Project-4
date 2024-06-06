@@ -59,11 +59,9 @@ function AllMovements({ user }: { user: null | IUser }) {
 
   return (
     <section className="movements">
-      <div className="movements__title">
+      <div className="movements__header">
         <h1>Movements</h1>
-        <h4>Empower yourself! And explore a world of movements .</h4>
-      </div>
-      <div>
+        <h3>Empower yourself! And explore a world of movements .</h3>
         <div className="movements__searchadd">
           {/* Search bar */}
           <div className="movements__search">

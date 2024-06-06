@@ -9,7 +9,6 @@
   &__wrapper {
     @include flex(column, center, start);
     width: 100%;
-    padding: 0 3rem;
   }
 
   &__input {
@@ -21,5 +20,9 @@
     @include button-primary;
     @include flex(row, center, center);
     margin-top: 1rem;
+  }
+  // ------------TABLETBREAKPOINT
+  @include tablet-and-desktop {
+    padding-top: 1rem;
   }
 }

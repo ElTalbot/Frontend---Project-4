@@ -154,16 +154,20 @@ export default function SignupForm(
       </div>
 
       <label className="signup-form__check">
-        <input type="checkbox" checked={isChecked} onChange={changeHandler} />
-        &nbsp; By ticking this box you are accepting the&nbsp;
-        <Link className="signup-form__legal" to="/terms">
-          <div> Terms </div>
-        </Link>
-        &nbsp;and&nbsp;
-        <Link className="signup-form__legal" to="/privacy">
-          <div> Privacy </div>
-        </Link>
-        &nbsp;Policy
+        <div>
+          <input type="checkbox" checked={isChecked} onChange={changeHandler} />
+          &nbsp; By ticking this box you are accepting the &nbsp;
+        </div>
+        <div className="signup-form__terms">
+          <Link className="signup-form__legal" to="/terms">
+            <div> Terms </div>
+          </Link>
+          &nbsp;and&nbsp;
+          <Link className="signup-form__legal" to="/privacy">
+            <div> Privacy </div>
+          </Link>
+          &nbsp;Policy
+        </div>
       </label>
       {checkError && <p className="signup-form__error">{checkError}</p>}
 

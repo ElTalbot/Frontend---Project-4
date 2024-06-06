@@ -3,24 +3,19 @@
 
 .movements {
   @include container;
-  gap: 1rem;
+  gap: 2rem;
   background-color: $bg-primary;
-  width: 100vw;
+  min-height: 100vh;
 
-  &__title {
-    padding-left: 18px;
+  &__header {
+    margin: 0 20px;
   }
   &__searchadd {
     @include flex(column);
-
-    @include tablet-and-desktop {
-      @include flex(row, space-between, start);
-    }
   }
   &__search {
     @include flex(row, center, start);
     width: 60%;
-    margin: 0 16px;
     margin-top: 10px;
   }
   &__input {
@@ -48,6 +43,11 @@
 
     :hover {
       transform: scale(1.01);
+    }
+  }
+  @include tablet-and-desktop {
+    &__searchadd {
+      @include flex(row, space-between);
     }
   }
 }

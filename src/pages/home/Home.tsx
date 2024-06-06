@@ -22,13 +22,13 @@ function Home({ user }: { user: null | IUser }) {
           Join our <span className="home__uppercase">inclusive</span> fitness
           community!
         </h1>
-        <h4 className="home__text">
+        <h3 className="home__text">
           Step into our vibrant community, <br /> Whether you're a fitness
           enthusiast or just starting your fitness journey, our classes offer a{" "}
           <br />{" "}
           <span className="home__highlight">welcoming space for all</span>{" "}
           backgrounds, experiences, and fitness levels.
-        </h4>
+        </h3>
 
         <div className="home__keywords">
           <div className="home__rowkeywords">
@@ -107,7 +107,7 @@ function Home({ user }: { user: null | IUser }) {
 
       <div className="home__feature">
         <div className="home__featuremove">
-          <div>
+          <div className="home__featurewords">
             <p className="home__featurekeywords">
               Inclusive, Adaptable, Accessible
             </p>
@@ -133,28 +133,20 @@ function Home({ user }: { user: null | IUser }) {
             )}
           </div>
         </div>
-        <div>
-          <figure>
-            <img
-              className="home__imageright"
-              src={everyone}
-              alt="Owlcore Logo"
-            />
-          </figure>
-        </div>
+        <figure>
+          <img className="home__imageright" src={everyone} alt="Owlcore Logo" />
+        </figure>
       </div>
 
       {/* Section for movements */}
       <div className="home__featureleft">
-        <div className="home__featuremoveleft">
-          <div>
-            <p className="home__featurekeywordsleft">
+        <div className="home__featuremove">
+          <div className="home__featurewords">
+            <p className="home__featurekeywords">
               Self-paced, Convenient, Variations
             </p>
-            <h2 className="home__featurewordsleft">
-              Unlock a library of movements!
-            </h2>
-            <h5 className="home__featurewordsleft">
+            <h2>Unlock a library of movements!</h2>
+            <h5>
               Explore a diverse collection of exercises designed for{" "}
               <span className="home__highlight">all levels</span>. Every
               movement comes with clear explanations, adaptable variations,
@@ -192,7 +184,7 @@ function Home({ user }: { user: null | IUser }) {
       {/* Section for Community */}
       <div className="home__feature">
         <div className="home__featuremove">
-          <div>
+          <div className="home__featurewords">
             <p className="home__featurekeywords">Support, Empower, Connect</p>
             <h2>Welcome to the Owlcore Online Community!</h2>
             <h5>
@@ -221,7 +213,11 @@ function Home({ user }: { user: null | IUser }) {
         </div>
         <div>
           <figure>
-            <img src={community} alt="Owlcore Logo" />
+            <img
+              className="home__imageright"
+              src={community}
+              alt="Owlcore Logo"
+            />
           </figure>
         </div>
       </div>
