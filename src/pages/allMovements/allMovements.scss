@@ -8,7 +8,7 @@
   min-height: 100vh;
 
   &__header {
-    margin: 0 20px;
+    padding: 0 20px;
   }
   &__searchadd {
     @include flex(column);
@@ -45,6 +45,7 @@
       transform: scale(1.01);
     }
   }
+  // ---------TABLETBREAKPOINT
   @include tablet-and-desktop {
     &__searchadd {
       @include flex(row, space-between);

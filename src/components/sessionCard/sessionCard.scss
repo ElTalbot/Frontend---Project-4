@@ -35,7 +35,11 @@
     font-weight: 700;
     font-size: 16px;
   }
-
+  &__delete {
+    background-color: $bg-secondary;
+    border: none;
+    color: $fail;
+  }
   &__full {
     text-transform: uppercase;
     font-size: 14px;

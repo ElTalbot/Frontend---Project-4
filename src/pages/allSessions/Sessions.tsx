@@ -6,6 +6,7 @@ import { IUser } from "../../interfaces/user";
 import { baseUrl } from "../../config";
 import axios from "axios";
 import "./allSessions.scss";
+import AddSessionModal from "../addSessionModal/AddSessionModal";
 
 type Sessions = null | Array<ISession>;
 
@@ -13,6 +14,7 @@ function AllSessions({ user }: { user: null | IUser }) {
   const [sessions, setSessions] = React.useState<Sessions>(null);
   const [book, setBook] = React.useState(null);
   const { sessionId } = useParams();
+  const [showModal, setShowModal] = React.useState(false);
 
   // get all sessions on page load
   async function fetchSessions() {
@@ -61,6 +63,10 @@ function AllSessions({ user }: { user: null | IUser }) {
     });
   }
 
+  const toggleAddModal = () => {
+    setShowModal(!showModal);
+  };
+
   // return the sessions cards
 
   return (
@@ -69,6 +75,22 @@ function AllSessions({ user }: { user: null | IUser }) {
         <div className="sessions__title">
           <h1>Sessions</h1>
           <h4>Let's get moving!</h4>
+          {/* Add button */}
+
+          {user?.is_admin && (
+            <>
+              <button
+                className="sessions__addbtn"
+                onClick={() => {
+                  setShowModal(true);
+                }}
+              >
+                Add
+                <i className="fa fa-plus"></i>
+              </button>
+              {showModal && <AddSessionModal toggleAddModal={toggleAddModal} />}
+            </>
+          )}
         </div>
         <div className="sessions__cards">
           {sessions?.map((session: any) => {

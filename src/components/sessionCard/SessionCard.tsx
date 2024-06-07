@@ -1,17 +1,16 @@
-import { ISession } from "../../interfaces/session";
-import { Link } from "react-router-dom";
 import React from "react";
-import { IUser } from "../../interfaces/user";
-import { baseUrl } from "../../config";
+import { ISession } from "../../interfaces/session";
 import axios from "axios";
 import "./sessionCard.scss";
+import DeleteModal from "../../pages/deleteSessionModal/DeleteSessionModal";
+import { baseUrl } from "../../config";
 
 interface SessionProps extends ISession {
   onBook: (id: any) => void;
   onCancel: (id: any) => void;
   fetchSessions: Function;
   user_booked: boolean;
-  user: string;
+  user: any;
   session_id: string;
   session_date: string;
   session_day: string;
@@ -19,7 +18,7 @@ interface SessionProps extends ISession {
   session_name: string;
 }
 
-function Session({
+const Session: React.FC<SessionProps> = ({
   session_id,
   session_date,
   session_day,
@@ -30,17 +29,24 @@ function Session({
   onCancel,
   user_booked,
   fetchSessions,
-}: SessionProps) {
+}) => {
   const [sessionCount, setSessionCount] = React.useState<number>(0);
+  const [showModal, setShowModal] = React.useState(false);
+
   async function fetchSessionBookings(sessionId: any) {
     const { data } = await axios.get(`${baseUrl}/usersessions/${sessionId}`);
     const userCount = parseInt(data.user_count);
     setSessionCount(userCount);
   }
+
   React.useEffect(() => {
     fetchSessionBookings(session_id);
     fetchSessions();
   }, [session_id]);
+
+  const toggleDeleteModal = () => {
+    setShowModal(!showModal);
+  };
 
   return (
     <div className="session">
@@ -48,11 +54,29 @@ function Session({
         <div className="session__namedaydate">
           <p className="session__day">{session_day}</p>
           <p className="session__date">{session_date}</p>
+          {user.is_admin && (
+            <>
+              <button
+                className="session__delete"
+                onClick={() => {
+                  setShowModal(true);
+                }}
+              >
+                <i className="fa fa-trash"></i>
+              </button>
+              {showModal && (
+                <DeleteModal
+                  toggleDeleteModal={toggleDeleteModal}
+                  sessionId={session_id}
+                  user={null}
+                  fetchSessions={fetchSessions}
+                />
+              )}
+            </>
+          )}
         </div>
       )}
-
       <div className="session__buttons">
-        {" "}
         <p className="session__name">
           <i className="fa-solid fa-person-walking"></i>
           &nbsp;{session_name}
@@ -90,6 +114,6 @@ function Session({
       </div>
     </div>
   );
-}
+};
 
 export default Session;

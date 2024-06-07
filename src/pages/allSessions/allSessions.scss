@@ -7,7 +7,6 @@
   background-color: $bg-primary;
   min-height: 100vh;
   &__title {
-    @include flex(column, flex-start, flex-start);
     margin: 0 20px;
     margin-bottom: 20px;
   }
@@ -15,6 +14,12 @@
     margin: 0 20px;
     @include flex(row, flex-start, flex-start);
     flex-wrap: wrap;
+  }
+  &__addbtn {
+    @include button-primary;
+    @include flex(row, space-evenly);
+    margin-top: 10px;
+    margin-right: 16px;
   }
   // ----------TABLETBREAKPOINT
   @include tablet-and-desktop {

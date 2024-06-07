@@ -5,11 +5,6 @@
   @include flex(column, start, stretch);
   width: 100%;
   gap: 1rem;
-
-  &__container {
-    width: 100%;
-  }
-
   &__all {
     @include flex(row, space-between, center);
     width: 100%;
@@ -27,18 +22,6 @@
     @include flex(row, space-evenly);
     margin-top: 10px;
     margin-right: 16px;
-    margin-bottom: 40px;
-  }
-
-  &__dropdown {
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.5rem;
-    border: 2px solid $text-placeholder;
-    width: 100%;
-    position: relative;
-    &:active,
-    &:focus {
-      outline: 1px solid $accent-primary;
-    }
+    margin-bottom: 0;
   }
 }

@@ -1,13 +1,14 @@
 @use "../../styles/mixins" as *;
 @use "../../styles/variables" as *;
 
-.add {
+.update {
   @include container;
   @include flex;
   background-color: $bg-transparent;
   min-height: 100vh;
   position: fixed;
   top: 0;
+  right: 0;
 
   &__container {
     @include container;
@@ -26,10 +27,12 @@
   // ---------TABLETBREAKPOINT
   @include tablet-and-desktop {
     width: 60%;
-    left: 0;
+    &__content {
+      margin-bottom: 40px;
+    }
   }
   // ---------DESKTOPBREAKPOINT
   @include desktop {
-    left: 8%;
+    left: 0;
   }
 }

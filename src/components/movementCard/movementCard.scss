@@ -8,7 +8,6 @@
   background-color: $bg-secondary;
   max-width: 320px;
   border-radius: 6px;
-
   &__top {
     @include flex(row, space-between, end);
   }
@@ -42,6 +41,7 @@
     height: 2rem;
     @include flex(row, flex-end);
     margin-top: 4px;
+    margin-bottom: 20px;
   }
 
   &__icon {

@@ -8,6 +8,7 @@
   min-height: 100vh;
   position: fixed;
   top: 0;
+  left: 0;
 
   &__container {
     @include container;
@@ -23,13 +24,15 @@
     @include flex(column, start, start);
     gap: 1rem;
   }
-  // ---------TABLETBREAKPOINT
+  // ------TABLETBREAKPOINT
   @include tablet-and-desktop {
-    width: 60%;
-    left: 0;
+    &__container {
+      width: 60%;
+      padding-bottom: 40px;
+    }
   }
   // ---------DESKTOPBREAKPOINT
   @include desktop {
-    left: 8%;
+    right: 0;
   }
 }

@@ -2,7 +2,7 @@
 @use "../../styles/variables" as *;
 
 .footer {
-  @include flex(row, space-between, flex-end);
+  @include flex(column);
   background-color: $bg-primary;
   margin: 20px;
   padding-bottom: 0;
@@ -17,12 +17,12 @@
   }
 
   &__copy {
-    @include flex(row, space-between, center);
-    gap: 1rem;
+    @include flex(row, center, center);
   }
 
   &__copyright {
     @include flex(row);
+    margin: 0 10px;
   }
   &__legal {
     font-size: 14px;
@@ -44,9 +44,9 @@
     gap: 1rem;
     min-width: 96px;
   }
-}
-@media screen and (max-width: 600px) {
-  .footer {
-    @include flex(column);
+
+  // ---------TABLETBREAKPOINT
+  @include tablet-and-desktop {
+    @include flex(row, space-between, flex-end);
   }
 }
