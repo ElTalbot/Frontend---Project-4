@@ -24,7 +24,7 @@
   }
 
   &__equip {
-    @include flex(row, space-between, end);
+    @include flex(row, end, end);
     margin: 10px 0;
   }
   &__equiptext {

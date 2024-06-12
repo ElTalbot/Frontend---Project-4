@@ -31,7 +31,6 @@ function Movement({
         </figure>
 
         <div className="movement__equip">
-          <h5 className="movement__equiptext">Learn your way..</h5>
           <p className="movement__type">{equipment}</p>
         </div>
         <p className="movement__description">{descriptionOne}</p>

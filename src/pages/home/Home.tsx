@@ -112,7 +112,7 @@ function Home({ user }: { user: null | IUser }) {
               Inclusive, Adaptable, Accessible
             </p>
             <h2>Fitness classes for everyone!</h2>
-            <h5>
+            <h5 className="featureword">
               Come together with like-minded individuals to get{" "}
               <span className="home__highlight">moving</span>, have{" "}
               <span className="home__highlight">fun</span>, and{" "}
@@ -146,7 +146,7 @@ function Home({ user }: { user: null | IUser }) {
               Self-paced, Convenient, Variations
             </p>
             <h2>Unlock a library of movements!</h2>
-            <h5>
+            <h5 className="featureword">
               Explore a diverse collection of exercises designed for{" "}
               <span className="home__highlight">all levels</span>. Every
               movement comes with clear explanations, adaptable variations,
@@ -187,7 +187,7 @@ function Home({ user }: { user: null | IUser }) {
           <div className="home__featurewords">
             <p className="home__featurekeywords">Support, Empower, Connect</p>
             <h2>Welcome to the Owlcore Online Community!</h2>
-            <h5>
+            <h5 className="featureword">
               Join our online community where you can connect with{" "}
               <span className="home__highlight">like-minded</span>
               individuals in a monitored,{" "}
