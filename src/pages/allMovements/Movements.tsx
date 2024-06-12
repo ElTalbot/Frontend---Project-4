@@ -10,6 +10,7 @@ import "./allMovements.scss";
 type Movements = null | Array<IMovement>;
 
 function AllMovements({ user }: { user: null | IUser }) {
+  const [allMovements, setAllMovements] = React.useState<Movements>(null);
   const [movements, setMovements] = React.useState<Movements>(null);
   const [value, setValue] = React.useState("");
   const [search, setSearch] = React.useState("");
@@ -20,6 +21,7 @@ function AllMovements({ user }: { user: null | IUser }) {
     async function fetchmovements() {
       const resp = await fetch(`${baseUrl}/movements`);
       const data = await resp.json();
+      setAllMovements(data);
       setMovements(data);
     }
     fetchmovements();
@@ -27,13 +29,19 @@ function AllMovements({ user }: { user: null | IUser }) {
 
   // Fetch search bar and filter movements
   React.useEffect(() => {
-    async function fetchMovement() {
-      const resp = await fetch(`${baseUrl}/movements?type=${value}`);
-      const movementData = await resp.json();
-      setMovements(movementData);
+    if (allMovements) {
+      setMovements(
+        allMovements.filter((movement) => {
+          return (
+            (search === "" ||
+              movement.name.toLowerCase().includes(search.toLowerCase())) &&
+            (value === "" ||
+              movement.type.toLowerCase() === value.toLowerCase())
+          );
+        })
+      );
     }
-    fetchMovement();
-  }, [value]);
+  }, [value, search, allMovements]);
 
   function handleChange(e: any) {
     setSearch(e.currentTarget.value);
@@ -48,7 +56,8 @@ function AllMovements({ user }: { user: null | IUser }) {
       return (
         (search === "" ||
           movement.name.toLowerCase().includes(search.toLowerCase())) &&
-        (value === "" || movement.type.includes(value))
+        (value === "" ||
+          movement.type.toLowerCase().includes(value.toLowerCase()))
       );
     });
   }
@@ -86,7 +95,7 @@ function AllMovements({ user }: { user: null | IUser }) {
               <option value="Resistance">Resistance</option>
               <option value="Mobilisation">Mobilisation</option>
               <option value="Stretching">Stretching</option>
-              <option value="Cardop">Cardio</option>
+              <option value="Cardio">Cardio</option>
             </select>
           </div>
 
