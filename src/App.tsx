@@ -62,6 +62,7 @@ function App() {
               user={user}
               addToFavourites={addToFavourites}
               movements={[]}
+              removeFromFavourites={removeFromFavourites}
               isFavorite={isFavorite}
             />
           }

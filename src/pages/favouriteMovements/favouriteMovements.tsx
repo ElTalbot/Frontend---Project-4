@@ -19,8 +19,6 @@ const FavouritesPage: React.FC<FavouritesPageProps> = ({
   removeFromFavourites,
   isFavorite,
 }) => {
-  const [showModal, setShowModal] = React.useState(false);
-
   return (
     <section className="favourites">
       <h1 className="favourites__header">Your Favourite Movements</h1>

@@ -11,6 +11,7 @@ interface AllMovementsProps {
   user: null | IUser;
   movements: IMovement[];
   addToFavourites: (movement: IMovement) => void;
+  removeFromFavourites: (movement: IMovement) => void;
   isFavorite: (movement: IMovement) => boolean;
 }
 
@@ -18,6 +19,7 @@ function AllMovements({
   user,
   movements: initialMovements,
   addToFavourites,
+  removeFromFavourites,
   isFavorite,
 }: AllMovementsProps) {
   const [allMovements, setAllMovements] =
@@ -137,6 +139,7 @@ function AllMovements({
               user={user}
               addToFavourites={addToFavourites}
               isFavorite={isFavorite(movement)}
+              removeFromFavourites={removeFromFavourites}
             />
           );
         })}
