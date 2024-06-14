@@ -18,9 +18,12 @@ import Privacy from "./pages/legal/privacy";
 import Terms from "./pages/legal/terms";
 import AddMovementModal from "./pages/AddMovementForm/AddMovementForm";
 import { baseUrl } from "./config";
+import { IMovement } from "./interfaces/movement";
+import FavouritesPage from "./pages/favouriteMovements/favouriteMovements";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [movementFav, setMovementFav] = React.useState<IMovement[]>([]);
   async function fetchUser() {
     const token = localStorage.getItem("token");
     const resp = await axios.get(`${baseUrl}/user`, {
@@ -33,6 +36,15 @@ function App() {
     const token = localStorage.getItem("token");
     if (token) fetchUser();
   }, []);
+  const addToFavourites = (movement: IMovement) => {
+    setMovementFav((prevFavs) => [...prevFavs, movement]);
+  };
+  const removeFromFavourites = (movement: IMovement) => {
+    setMovementFav((prevFavs) => prevFavs.filter((m) => m.id !== movement.id));
+  };
+  const isFavorite = (movement: IMovement) => {
+    return movementFav.some((fav) => fav.id === movement.id);
+  };
   return (
     <Router>
       <Header user={user} setUser={setUser} />
@@ -43,17 +55,47 @@ function App() {
         <Route path="/terms" element={<Terms />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<LoginPage fetchUser={fetchUser} />} />
-        <Route path="/movements" element={<AllMovements user={user} />} />
+        <Route
+          path="/movements"
+          element={
+            <AllMovements
+              user={user}
+              addToFavourites={addToFavourites}
+              movements={[]}
+              isFavorite={isFavorite}
+            />
+          }
+        />
         <Route
           path="/addmovement"
           element={<AddMovementModal onClose user={user} />}
         />
         <Route path="/sessions" element={<AllSessions user={user} />} />
         <Route path="/posts" element={<AllPosts user={user} />} />
+
         <Route
           path="/movements/:movementId"
-          element={<ShowMovement user={user} />}
+          element={
+            <ShowMovement
+              user={user}
+              addToFavourites={addToFavourites}
+              removeFromFavourites={removeFromFavourites}
+              isFavorite={isFavorite}
+            />
+          }
         />
+        <Route
+          path="/favourites"
+          element={
+            <FavouritesPage
+              user={user}
+              favourites={movementFav}
+              removeFromFavourites={removeFromFavourites}
+              isFavorite={isFavorite}
+            />
+          }
+        />
+
         <Route path="/posts/:postId" element={<AllPosts user={user} />} />
       </Routes>
       <Footer user={user} setUser={setUser} />

@@ -3,7 +3,7 @@
 
 .movement {
   @include container;
-  @include flex(row, space-between);
+  @include flex(column, space-between, flex-end);
   margin: 10px 10px;
   background-color: $bg-secondary;
   max-width: 320px;
@@ -39,9 +39,19 @@
   &__learn {
     font-weight: 500;
     height: 2rem;
-    @include flex(row, flex-end);
+    @include flex(row, space-between);
     margin-top: 4px;
     margin-bottom: 20px;
+  }
+  &__likebutton {
+    @include flex(flex-end, flex-end);
+  }
+  &__like {
+    background-color: $bg-secondary;
+    border: none;
+  }
+  &__heart {
+    color: $accent-primary;
   }
 
   &__icon {

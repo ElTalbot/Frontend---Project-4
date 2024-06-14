@@ -1,0 +1,32 @@
+@use "../../styles/mixins" as *;
+@use "../../styles/variables" as *;
+
+.favourites {
+  @include container;
+  gap: 2rem;
+  background-color: $bg-primary;
+
+  &__header {
+    margin-bottom: 20px;
+    margin: 0 20px;
+  }
+  &__movement {
+    @include container;
+    @include flex(row, space-between);
+    margin: 10px 10px;
+    background-color: $bg-secondary;
+    max-width: 320px;
+    border-radius: 6px;
+    &__top {
+      @include flex(row, space-between, end);
+    }
+  }
+  &__cards {
+    @include flex(row);
+    flex-wrap: wrap;
+
+    :hover {
+      transform: scale(1.01);
+    }
+  }
+}

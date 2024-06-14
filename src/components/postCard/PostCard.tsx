@@ -33,7 +33,6 @@ const Post: React.FC<PostProps & { user: IUser | null }> = ({
   const updateAtDate = new Date(updated_at);
   const formattedUpdatedAt = updateAtDate.toLocaleString();
 
-  console.log(formattedUpdatedAt);
   return (
     <div className="post">
       <div className="post__content">

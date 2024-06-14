@@ -1,19 +1,33 @@
 import React from "react";
 import Movement from "../../components/movementCard/MovementCard";
 import { IMovement } from "../../interfaces/movement";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { IUser } from "../../interfaces/user";
 import AddMovementModal from "../addMovementModal/AddMovementModal";
 import { baseUrl } from "../../config";
 import "./allMovements.scss";
 
-type Movements = null | Array<IMovement>;
+interface AllMovementsProps {
+  user: null | IUser;
+  movements: IMovement[];
+  addToFavourites: (movement: IMovement) => void;
+  isFavorite: (movement: IMovement) => boolean;
+}
 
-function AllMovements({ user }: { user: null | IUser }) {
-  const [allMovements, setAllMovements] = React.useState<Movements>(null);
-  const [movements, setMovements] = React.useState<Movements>(null);
-  const [value, setValue] = React.useState("");
+function AllMovements({
+  user,
+  movements: initialMovements,
+  addToFavourites,
+  isFavorite,
+}: AllMovementsProps) {
+  const [allMovements, setAllMovements] =
+    React.useState<IMovement[]>(initialMovements);
+
+  const [filteredMovements, setFilteredMovements] =
+    React.useState<IMovement[]>(initialMovements);
+
   const [search, setSearch] = React.useState("");
+  const [value, setValue] = React.useState("");
   const [showModal, setShowModal] = React.useState(false);
 
   // Fetch all movements
@@ -22,25 +36,22 @@ function AllMovements({ user }: { user: null | IUser }) {
       const resp = await fetch(`${baseUrl}/movements`);
       const data = await resp.json();
       setAllMovements(data);
-      setMovements(data);
+      setFilteredMovements(data);
     }
     fetchmovements();
   }, []);
 
   // Fetch search bar and filter movements
   React.useEffect(() => {
-    if (allMovements) {
-      setMovements(
-        allMovements.filter((movement) => {
-          return (
-            (search === "" ||
-              movement.name.toLowerCase().includes(search.toLowerCase())) &&
-            (value === "" ||
-              movement.type.toLowerCase() === value.toLowerCase())
-          );
-        })
-      );
-    }
+    setFilteredMovements(
+      allMovements.filter((movement) => {
+        return (
+          (search === "" ||
+            movement.name.toLowerCase().includes(search.toLowerCase())) &&
+          (value === "" || movement.type.toLowerCase() === value.toLowerCase())
+        );
+      })
+    );
   }, [value, search, allMovements]);
 
   function handleChange(e: any) {
@@ -49,17 +60,6 @@ function AllMovements({ user }: { user: null | IUser }) {
 
   function handleMovementChange(e: any) {
     setValue(e.currentTarget.value);
-  }
-
-  function filterMovements() {
-    return movements?.filter((movement) => {
-      return (
-        (search === "" ||
-          movement.name.toLowerCase().includes(search.toLowerCase())) &&
-        (value === "" ||
-          movement.type.toLowerCase().includes(value.toLowerCase()))
-      );
-    });
   }
 
   const toggleAddModal = () => {
@@ -102,27 +102,43 @@ function AllMovements({ user }: { user: null | IUser }) {
           {/* Add button */}
 
           {user && (
-            <>
-              <button
-                className="movements__addbtn"
-                onClick={() => {
-                  setShowModal(true);
-                }}
-              >
-                Add
-                <i className="fa fa-plus"></i>
-              </button>
-              {showModal && (
-                <AddMovementModal toggleAddModal={toggleAddModal} />
-              )}
-            </>
+            <div className="movements__favbuttons">
+              <>
+                <Link to={`/favourites`}>
+                  <button className="movements__favbtn">
+                    My Favourites &nbsp;
+                    <i className="movements__heart fa fa-heart"></i>
+                  </button>
+                </Link>
+                <button
+                  className="movements__addbtn"
+                  onClick={() => {
+                    setShowModal(true);
+                  }}
+                >
+                  Add
+                  <i className="fa fa-plus"></i>
+                </button>
+                {showModal && (
+                  <AddMovementModal toggleAddModal={toggleAddModal} />
+                )}
+              </>
+            </div>
           )}
         </div>
       </div>
 
       <div className="movements__cards">
-        {filterMovements()?.map((movement: any) => {
-          return <Movement key={movement.id} {...movement} user={user} />;
+        {filteredMovements?.map((movement: any) => {
+          return (
+            <Movement
+              key={movement.id}
+              {...movement}
+              user={user}
+              addToFavourites={addToFavourites}
+              isFavorite={isFavorite(movement)}
+            />
+          );
         })}
       </div>
     </section>

@@ -31,6 +31,33 @@
       outline: 1px solid $accent-primary;
     }
   }
+  &__favbuttons {
+    @include flex(row, center, center);
+  }
+  &__favbtn {
+    background-color: $bg-primary;
+    color: $text-primary;
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 500;
+    height: 2rem;
+    width: fit-content;
+    padding: 10px;
+    border-radius: 0.5rem;
+    border: solid 3px $accent-primary;
+
+    @include tablet-and-desktop {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+      width: fit-content;
+      min-width: 7rem;
+    }
+    @include flex(row, space-evenly);
+    margin-top: 10px;
+    margin-right: 16px;
+  }
+  &__heart {
+    color: $accent-primary;
+  }
   &__addbtn {
     @include button-primary;
     @include flex(row, space-evenly);

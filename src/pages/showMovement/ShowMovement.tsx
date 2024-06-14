@@ -8,11 +8,24 @@ import DeleteMovementModal from "../deleteMovementModal/DeleteMovementModal";
 import { baseUrl } from "../../config";
 import "./showMovement.scss";
 
-function ShowMovement({ user }: { user: null | IUser }) {
+interface ShowMovementProps {
+  user: IUser | null;
+  addToFavourites: (movement: IMovement) => void;
+  removeFromFavourites: (movement: IMovement) => void;
+  isFavorite: (movement: IMovement) => boolean;
+}
+
+const ShowMovement: React.FC<ShowMovementProps> = ({
+  user,
+  addToFavourites,
+  removeFromFavourites,
+  isFavorite,
+}) => {
   const [movement, setMovement] = React.useState<IMovement | null>(null);
   const [showModal, setShowModal] = React.useState(false);
   const [updateModal, setUpdateModal] = React.useState(false);
   const { movementId } = useParams();
+  const [isFav, setIsFav] = React.useState(false);
   const navigate = useNavigate();
 
   React.useEffect(() => {
@@ -24,13 +37,26 @@ function ShowMovement({ user }: { user: null | IUser }) {
       setShowModal(false);
     }
     fetchMovement();
-  }, [user]);
+  }, [user, movementId]);
 
   const toggleUpdateModal = () => {
     setUpdateModal(!updateModal);
   };
   const toggleDeleteModal = () => {
     setShowModal(!showModal);
+  };
+  const handleAddToFavourites = () => {
+    if (movement) {
+      addToFavourites(movement);
+      isFavorite(movement);
+      setIsFav(true);
+    }
+  };
+  const handleRemoveFromFavourites = () => {
+    if (movement) {
+      removeFromFavourites(movement);
+      setIsFav(false);
+    }
   };
 
   if (!movement && movement) {
@@ -39,7 +65,23 @@ function ShowMovement({ user }: { user: null | IUser }) {
   return (
     <section className="show">
       <div className="show__header">
-        <h1>{movement && movement.name}</h1>
+        <div className="show__titlelike">
+          <h1>{movement && movement.name}</h1>
+          {isFav && (
+            <button
+              className="show__favbtn"
+              onClick={handleRemoveFromFavourites}
+            >
+              <i className="show__heart fa fa-heart fa-xl fa-beat"></i>
+            </button>
+          )}
+          {!isFav && (
+            <button className="show__favbtn" onClick={handleAddToFavourites}>
+              <i className="show__heart fa-regular fa-heart fa-xl fa-beat"></i>
+            </button>
+          )}
+        </div>
+
         <div className="show__textbuttons">
           <div className="show__top">
             <p className="show__toptitle">Type</p>
@@ -126,6 +168,6 @@ function ShowMovement({ user }: { user: null | IUser }) {
       </div>
     </section>
   );
-}
+};
 
 export default ShowMovement;

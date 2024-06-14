@@ -10,6 +10,16 @@
     margin-bottom: 20px;
     margin: 0 20px;
   }
+  &__titlelike {
+    @include flex(row, space-between, center);
+  }
+  &__heart {
+    color: $accent-primary;
+  }
+  &__favbtn {
+    background-color: $bg-primary;
+    border: none;
+  }
   &__textbuttons {
     @include flex(column, space-between);
     margin-top: 10px;
